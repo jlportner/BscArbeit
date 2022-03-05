@@ -1,0 +1,148 @@
+%\input{../header}
+\input{./setup/MAIN.tex}
+\usepackage{todonotes}
+\usepackage{./tikzit/tikzit}
+\usepackage{biblatex}
+\input{./tikzit/test.tikzstyles}
+\addbibresource{./references.bib}
+
+\begin{document}	
+
+\section{Einführung}
+In the following we mainly follow Bartholdi's hands on approach from \cite{bartholdi16} to define the forested graph complex.
+The more general definition from Conant and Vogtmann from \cite{conant03} has been postponed as it is too complex and unintuitive for the beginning.
+Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's draft [].
+Inspired by this similar examples for the forested graph complex are presented.
+
+\begin{definition}
+	A \emph{graph} $G$ is a finite $1$-dimensional CW complex. The set of edges is denoted by $E(G)$, the set of vertices by  $V(G)$.
+	A loop is an edge having the same start and endpoint.
+	We call a graph \emph{connected} if the CW complex is connected in the topological sense.
+	A graph is $n$-connected if it remains connected after removing  $n-1$ arbitrary edges.
+	A graph is said to be \emph{$n$-regular} if every vertex has valency $n$ i.e. for every vertex the number of incident edges is $n$.
+
+	For a collection of edges $\Phi$ of $G$ we denote by $G / \Phi$ the graph quotient, which is the quotient space of the CW complex $G$ over its topological subspace $\Phi$.
+
+	Lastly a \emph{tree} is a connected graph which contains no cycles and a \emph{forest} is a collection of disjoint trees.
+\end{definition}
+
+\begin{definition}
+	As the fundamental group of a connected Graph is isomorphic to a free group, it makes sense to define the rank of a graph as the rank of its fundamental group $\pi_{1}(G)$.
+\end{definition}
+
+For a proof of this see for example \cite[p. 43f]{hatcher00}
+
+\begin{proposition}
+	The rank of a graph $G$ is equal to:
+	\begin{enumerate}
+		\item The number of independent cycles in $G$
+		\item The first Betti number i.e. the rank of $H_{1}(G)$
+		\item the Euler Characteristic of $G$ given by $\chi(G) = \abs{C(G)} - \abs{V(G)} + \abs{E(G)}$, 
+			where $\abs{C(G)}$ is the number of connected components of $G$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}[Proof Sketch]
+	That the rank is equal to the first Betti number follows from Hurewicz Theorem and the fact that the abelianisation of the free group of rank $n$
+	is the free abelian group of rank  $n$.
+
+	The equality of $2)$ and $3)$ follows from the argument for the fundamental group in \cite[p. 43f]{hatcher00}.
+	Lastly a proof of the equality of $1)$ and $3)$ can be found in \cite[p. 37-40]{harary69}.
+\end{proof}
+
+\begin{eg}\label{ex:gAuto}
+	Consider the following graph $G$.
+
+	Then $G$ is $3$-connected and $3$-regular. Moreover $G$ is isomorphic to $H$.
+	An isomorphism between them is given by mapping the same colored nodes to each other.
+	The graph quotient $G / \{e,f,g\}$ is given by $J$.
+
+	\ctikzfig{./tikzit/graph_automorphism}
+\end{eg}
+
+\begin{definition}
+	Let $G,H$ be two graphs. A map $f: V(G) \to V(H)$ is said to be a graph isomorphism if $f$ is a bijection such that
+	\[
+		(u,v) \in E(G) \Leftrightarrow (f(u),f(v)) \in E(H)
+	.\] 
+\end{definition}
+
+Let $F_{n}$ denote the free group of rank $n.$
+\begin{definition}
+	An \emph{admissible graph of rank $n$} is a $2$-connected loop less graph $G$ with fundamental group isomorphic to $F_{n}$ and with vertex-valency $\geq 2$.
+\end{definition}
+
+We often just write admissible graph for an admissible graph of rank $n$.
+
+\begin{definition}
+	Let $G$ be an admissible graph. Its \emph{degree} is given by
+	\[
+		\deg(G) := \sum_{v \in V(G)} (\deg(v) - 3)
+	.\] 
+\end{definition}
+
+In particular $G$ has $2n -2 - \deg(G)$ vertices and $3n -3 - \deg(G)$ edges and is $3$-regular iff $\deg(G) = 0$.
+
+\begin{definition}
+	An orientation $\sigma$ of a graph $G$ is an ordering of the edges i.e. $\sigma$ is an injective function from $E(G)$ to $\{1,\ldots,\abs{E(G)}\}$.
+	We call the tuple $(G,\sigma)$ an oriented graph and note that $\on{Sym}$ acts on $(G,\sigma)$ by $\pi (G,\sigma) = (G,\pi \sigma)$ for $\pi \in \on{Sym}$.
+\end{definition}
+
+If it is clear that $(G,\sigma)$ is an oriented graph we often just write $G$.
+
+\begin{definition}
+	A \emph{forested graph} is a pair $(G,\Phi)$ where $G$ is an admissible graph and $\Phi$ is an oriented forest which contains all vertices of $G$.
+
+	A map $f$ between two forested graphs $(G,\Phi), (H,\Psi)$ is said to be a forested graph isomorphism if $f$ is a graph isomorphism and $\sigma \circ f \mid_{\Phi} $  is
+	the identity, where $\sigma$ is the orientation on $\Phi$.
+	\todo{Is this correct?}
+\end{definition}
+
+For $k \in \N$ let $C_{k}$ denote the $\Q$-vector space spanned by isomorphism classes of forested graphs of rank $n$ with a forest of size $k$, subject to the relation
+\[
+	(G,\pi \Phi) = \sgn{\pi} \cdot (G,\Phi) \qq{for all} \pi \in \on{Sym}(k)
+.\] 
+Observe that if $(G,\Phi) \simeq (G,\pi \Phi)$ for an odd permutation $\pi$ then $(G,\Phi) \simeq (G,\pi \Phi) = - (G,\Phi)$ and thus $(G,\Phi) = 0$ in  $C_{k}$.
+
+\begin{eg}
+	Consider the graphs $G, J$ as in Example \ref{ex:gAuto}. Then $G$ and $J$ are admissible graphs of rank $3$ and $2$. Thus if we equip them with oriented forests $\Phi, \Psi$ as below 
+	(where the red edges represent the forest and the numbers the orientation) we get forested graphs.
+
+	\ctikzfig{./tikzit/forested_graph_automorphism}
+
+	Observe, that $(J,\Psi) = 0$ in $C_{k}$, since $ (1 2)$ is an odd permutation and  $(1 2) (J,\Psi)$ is isomorphic to $(J,\Psi)$ 
+	via the isomorphism mirroring along the vertical passing through the blue and purple vertex.
+
+	$(G,\Phi)$ however is not trivial which can be seen as follows : 
+	\todo[inline]{show that}
+\end{eg}
+
+To turn these spaces into a chain complex we define a differential as follows:
+\begin{definition}
+	Let $(G,\Phi) = (G, \{e_1,\ldots,e_{p}\} )$ be a forested graph. Then let
+	\begin{align*}
+		\partial_{C}(G,\Phi) = \sum_{i=1}^{p} (-1)^{i} (G / e_{i}, \Phi \setminus \{e_i\}),\\
+		\partial _{R}(G,\Phi) = \sum_{i=1}^{p} (-1)^{i} (G,\Phi \setminus \{e_{i}\}) 
+	\end{align*}
+	and define $\partial = \partial_{C} - \partial_{R}$.
+	\todo{define how to renumber edges}
+\end{definition}
+
+\begin{proposition}
+	$\partial$ is well-defined and $\partial^2 = 0$.
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
+
+Thus the spaces $(C_{\bullet})$ with the differential $\partial_{\bullet}$ form a chain complex.
+
+\begin{eg}
+	
+\end{eg}
+
+\printbibliography
+
+\include{Extras.tex}
+
+\end{document}

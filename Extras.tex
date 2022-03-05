@@ -1,0 +1,59 @@
+%\input{../header}
+
+\section{Draftparts}
+
+\begin{definition}
+	A \emph{graph} $G$ is a finite $1$-dimensional CW complex. The set of edges is denoted by $E(G)$, the set of vertices by  $V(G)$ and the set of half edges by  $H(G)$.
+	We call a graph \emph{connected} if the CW complex is connected in the topological sense.
+	A graph is said to be \emph{$n$-valent} if every vertex has valency $n$ i.e. for every vertex the number of edges incident is  $n$.
+
+	Lastly a \emph{tree} is a graph which contains no loops and a \emph{forest} is a collection of disjoint trees.
+\end{definition}
+
+On trivalent connected graphs we call an \emph{orientation} a choice of cyclic orders of all vertices up to an even number of changes.
+
+\begin{definition}
+	A \emph{forested graph} is a pair $(G, \Phi)$, where $G$ is a finite connected trivalent graph and $\Phi$ is an oriented forest which contains all vertices of $G$. 
+\end{definition}
+
+\begin{definition}
+Let $(G,\Phi)$ be a forested graph and let  $e \in \Phi$. Moreover let $(G_{e},\Phi_{e})$ be the graph where $e$ has been collapsed.
+Then there exist exactly two other graphs whose edge collapse results in $(G_{e},\Phi_{e})$. This is visualised in the figure below.
+Where  $1,2,3,4$ represent the rest of the graph.
+
+\ctikzfig{./tikzit/IHXRelator}
+Now the vector 
+\[
+	(G,\Phi) + (G',\Phi') + (G'',\Phi'')
+\]
+is called the \emph{basic IHX relator} associated to $(G,\Phi,e)$.
+\end{definition}
+
+Denote by $\widehat{\fg}_{k}$ the vector space spanned by all forested graphs containing $k$ trees modulo the relations $(G,\Phi) = -(G,-\Phi)$.
+Moreover let $\fg_{k}$ be the quotient of $\widehat{\fg}_{k}$ modulo the subspace spanned by all basic IHX relators.
+
+
+\begin{definition}
+	Let $\widehat{\partial}_E(G,\Phi): \widehat{\fg}_{k} \to \widehat{\fg}_{k-1}$ be given by
+\begin{align*}
+	\widehat{\partial}_{E}(G,\Phi) = \sum (G, \Phi \cup e)
+.\end{align*}
+where the sum is over all edges $e$ of $G \setminus \Phi$ such that $\Phi \cup e$ is still a forest.
+Notice that this only happens if the two vertices of  $e$ lie in different trees of $\Phi$. Thus $\Phi \cup e$ has $k-1$ components.
+The orientation of $\Phi \cup e$ is determined by ordering the edges of $\Phi$ with labels  $1,\ldots,k$ consistent with its orientation
+and then labeling the new edge $e$ with  $k+1$.
+
+Now let the boundary map $\partial_{E}: \fg_{k} \to \fg_{k-1}$ be the map induced by $p \circ \widehat{\partial}_{E}$ where $p$ is the quotient map $\widehat{\fg_{k}} \to \fg_{k}$.
+\end{definition}
+
+\begin{proposition}
+	$\partial_{E}$ is well-defined and $\partial_{E}^2 = 0$.
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
+
+The \emph{forested graph complex} is thus defined as the sequence $\fg_{k}$ with boundary map $\partial_{E}$ and is well-defined by the above proposition.
+
+\end{document}
