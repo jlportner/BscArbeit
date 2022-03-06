@@ -14,7 +14,10 @@
 \tikzstyle{purple}=[fill={rgb,255: red,174; green,139; blue,255}, draw=black, shape=circle]
 \tikzstyle{lightblue}=[fill={rgb,255: red,139; green,255; blue,251}, draw=black, shape=circle]
 \tikzstyle{orange}=[fill={rgb,255: red,255; green,204; blue,139}, draw=black, shape=circle]
+\tikzstyle{defaultSmall}=[fill=black, draw=black, shape=circle, scale=0.5]
+\tikzstyle{text node}=[fill=none, draw=none, shape=circle, font={\scriptsize}]
 
 % Edge styles
 \tikzstyle{standard}=[-, line width=1pt]
 \tikzstyle{red background}=[-, line width=4pt, draw={rgb,255: red,255; green,125; blue,127}]
+\tikzstyle{red edge}=[-, draw=red, line width=2]
