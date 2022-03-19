@@ -8,39 +8,69 @@
 
 \begin{document}	
 
-\section{Einführung}
+\section{Introduction}
 In the following we mainly follow Bartholdi's hands on approach from \cite{bartholdi16} to define the forested graph complex.
-The more general definition from Conant and Vogtmann from \cite{conant03} has been postponed as it is too complex and unintuitive for the beginning.
+The more general definition by Conant and Vogtmann from \cite{conant03} has been postponed as it is too complex and unintuitive for the beginning.
 Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's draft [].
 Inspired by this similar examples for the forested graph complex are presented.
 
+\section{Basic Definitions}
+\subsection{Graphs}
 \begin{definition}
 	A \emph{graph} $G$ is a finite $1$-dimensional CW complex. The set of edges is denoted by $E(G)$, the set of vertices by  $V(G)$.
-	A loop is an edge having the same start and endpoint.
+	We call an edge having the same start and end vertex a loop.
+
 	We call a graph \emph{connected} if the CW complex is connected in the topological sense.
-	A graph is $n$-connected if it remains connected after removing  $n-1$ arbitrary edges.
+	A graph is $n$-edge-connected if it remains connected after removing  $n-1$ arbitrary edges.
+
 	A graph is said to be \emph{$n$-regular} if every vertex has valency $n$ i.e. for every vertex the number of incident edges is $n$.
 
-	For a collection of edges $\Phi$ of $G$ we denote by $G / \Phi$ the graph quotient, which is the quotient space of the CW complex $G$ over its topological subspace $\Phi$.
-
-	Lastly a \emph{tree} is a connected graph which contains no cycles and a \emph{forest} is a collection of disjoint trees.
+	For a subset of edges $\Phi$ of $G$ we denote by $G / \Phi$ the graph quotient, which is the quotient space of the CW complex $G$ over its topological subspace $\Phi$.
 \end{definition}
+
+\begin{remark}
+	Note that in classical graph theory these types of graphs are called multigraphs, as they are allowed to have multiple edges between vertices as well as loops.
+	The word graph there normally refers to simple graphs which don't allow multi-edges and loops.
+
+	In the context of algebraic topology however multigraphs are needed and thus the word graph here denotes multigraphs.
+\end{remark}
 
 \begin{definition}
-	As the fundamental group of a connected Graph is isomorphic to a free group, it makes sense to define the rank of a graph as the rank of its fundamental group $\pi_{1}(G)$.
+	A sub graph $G'$ of a graph $G$ is a subcomplex of the CW complex $G$. As a subcomplex is itself a CW complex of dimension smaller or equal to the original complex,
+	 $G'$ is itself a graph.
 \end{definition}
+
+\begin{theorem}
+	Let $G$ be a graph. Then its fundamental group $\pi_{1}(G)$ is isomorphic to a free group.
+\end{theorem}
+By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
+
+\begin{proof}
+	
+\end{proof}
 
 For a proof of this see for example \cite[p. 43f]{hatcher00}
 
-\begin{proposition}
+To understand the rank better we will need the following definition
+\begin{definition}
+	For a finite Cw-complex $X$ the \emph{Euler Characteristic} is defined as the alternating sum
+	\[
+		\chi(X) = k_0 - k_1 + k_2 - \ldots
+	\] 
+	where $k_{i}$ denotes the number of cells of dimension $i$ in the complex $X$.
+\end{definition}
+For graphs we thus get $\chi (G) = k_0 - k_1$, as they are $1$-dimensional which is equal to $\chi(G) = \abs{V} - \abs{E}$.
+
+The following proposition 
+\begin{proposition}\label{prop:rank}
 	The rank of a graph $G$ is equal to:
 	\begin{enumerate}
 		\item The number of independent cycles in $G$
 		\item The first Betti number i.e. the rank of $H_{1}(G)$
-		\item the Euler Characteristic of $G$ given by $\chi(G) = \abs{C(G)} - \abs{V(G)} + \abs{E(G)}$, 
-			where $\abs{C(G)}$ is the number of connected components of $G$.
+		\item $1 - \chi(G) = \abs{E} - \abs{V} + 1$
 	\end{enumerate}
 \end{proposition}
+
 \begin{proof}[Proof Sketch]
 	That the rank is equal to the first Betti number follows from Hurewicz Theorem and the fact that the abelianisation of the free group of rank $n$
 	is the free abelian group of rank  $n$.
@@ -49,15 +79,7 @@ For a proof of this see for example \cite[p. 43f]{hatcher00}
 	Lastly a proof of the equality of $1)$ and $3)$ can be found in \cite[p. 37-40]{harary69}.
 \end{proof}
 
-\begin{eg}\label{ex:gAuto}
-	Consider the following graph $G$.
-
-	Then $G$ is $3$-connected and $3$-regular. Moreover $G$ is isomorphic to $H$.
-	An isomorphism between them is given by mapping the same colored nodes to each other.
-	The graph quotient $G / \{e,f,g\}$ is given by $J$.
-
-	\ctikzfig{./tikzit/graph_automorphism}
-\end{eg}
+Lastly a \emph{tree} is a connected graph which contains no cycles and a \emph{forest} is a collection of disjoint trees.
 
 \begin{definition}
 	Let $G,H$ be two graphs. A map $f: V(G) \to V(H)$ is said to be a graph isomorphism if $f$ is a bijection such that
@@ -66,10 +88,21 @@ For a proof of this see for example \cite[p. 43f]{hatcher00}
 	.\] 
 \end{definition}
 
+\begin{eg}\label{ex:gAuto}
+	Consider the following graphs.
+
+	\ctikzfig{./tikzit/graph_automorphism}
+	Then $G$ is $3$-connected and $3$-regular. Moreover $G$ is isomorphic to $H$.
+	An isomorphism between them is given by mapping the same colored nodes to each other.
+	The graph quotient $G / \{e,f,g\}$ is given by $J$.
+\end{eg}
+
+\subsection{Forested graph Complex}
 Let $F_{n}$ denote the free group of rank $n.$
 \begin{definition}
-	An \emph{admissible graph of rank $n$} is a $2$-connected loop less graph $G$ with fundamental group isomorphic to $F_{n}$ and with vertex-valency $\geq 2$.
+	An \emph{admissible graph of rank $n$} is a $2$-edge-connected graph $G$ with fundamental group isomorphic to $F_{n}$ and with vertex-valency $\geq 3$.
 \end{definition}
+
 
 We often just write admissible graph for an admissible graph of rank $n$.
 
@@ -90,61 +123,132 @@ In particular $G$ has $2n -2 - \deg(G)$ vertices and $3n -3 - \deg(G)$ edges and
 If it is clear that $(G,\sigma)$ is an oriented graph we often just write $G$.
 
 \begin{definition}
-	A \emph{forested graph} is a pair $(G,\Phi)$ where $G$ is an admissible graph and $\Phi$ is an oriented forest which contains all vertices of $G$.
-	\todo[inline]{All vertices cant be either because then boundary doesnt work?}
+	A \emph{forested graph} is a tripple $(G,\Phi,\sigma)$ where $G$ is an admissible graph $\Phi$ is a forest on $G$ and  $\sigma$ is an orientation on $\Phi$.
 
-	A map $f$ between two forested graphs $(G,\Phi), (H,\Psi)$ is said to be a forested graph isomorphism if $f$ is a graph isomorphism and $\sigma \circ f \mid_{\Phi} $  is
-	the identity, where $\sigma$ is the orientation on $\Phi$.
-	\todo{Is this correct?}
+	A map $f$ between two forested graphs $(G,\Phi, \sigma) \to (H,\Psi, \tau)$ is said to be a forested graph isomorphism if 
+	$f$ is a graph isomorphism on $G$,  $f(\Phi) = \Psi$ and $\sigma = \tau \circ f $
 \end{definition}
 
-For $k \in \N$ let $C_{k}$ denote the $\Q$-vector space spanned by isomorphism classes of forested graphs of rank $n$ with a forest of size $k$, subject to the relation
+We know want to construct our graph complex. For this we remember the notion of a graded vector space:
+\begin{definition}
+	A graded vector space, is a vector space $V$ and with a decomposition $\left(V_{n}\right)^{\infty}_{n=0} $ such that
+	\[
+		V = \bigoplus_{k=0}^{\infty} V_{n}
+	\] 
+\end{definition}
+
+We know consider the $\Q$-vector space $C$ spanned by isomorphism classes of forested graphs, subject to the relation
 \[
 	(G,\pi \Phi) = \sgn{\pi} \cdot (G,\Phi) \qq{for all} \pi \in \on{Sym}(k)
 .\]
 Observe that if $(G,\Phi) \simeq (G,\pi \Phi)$ for an odd permutation $\pi$ then $(G,\Phi) \simeq (G,\pi \Phi) = - (G,\Phi)$ and thus $(G,\Phi) = 0$ in  $C_{k}$.
 
-\todo[inline]{If $C_{k}$ is only of rank $n$ how can the boundary map be well defined when it reduces edge number by $1$ thus reducing rank by $1$}
+We can define the following three gradings on $C$:
+ \begin{itemize}
+	\item Let $C^{n} \subseteq C$ be the subspace spanned by forested graphs of rank $n$. Then clearly  $C^{n} \cap C^{m} = \emptyset$ for $n \neq m$ and
+		as every graph has a rank, we get that the $C^{n}$ form a grading of $C$.
+	\item Let $C_{k} \subseteq C$ be the subspace spanned by forested graphs with a forest of size $k$. Clearly this also yields a decomposition of $C$ into a direct sum
+		and thus yields another grading of $C$
+	\item Let  $C_{d} \subseteq C$ be the subspace spanned by forested graphs of degree $d$. Once again this yields a grading on $C$
+\end{itemize}
+In the following we will mostly be concerned with the first two gradings. In particular we will consider the double-grading $C_{k}^{n}$,
+where $k$ denotes the forest size and $n$ the rank. 
+
 \begin{eg}
 	Consider the graphs $G, J$ as in Example \ref{ex:gAuto}. Then $G$ and $J$ are admissible graphs of rank $3$ and $2$. Thus if we equip them with oriented forests $\Phi, \Psi$ as below 
 	(where the red edges represent the forest and the numbers the orientation) we get forested graphs.
 
 	\ctikzfig{./tikzit/forested_graph_automorphism}
 
-	Observe, that $(J,\Psi) = 0$ in $C_{k}$, since $ (1 2)$ is an odd permutation and  $(1 2) (J,\Psi)$ is isomorphic to $(J,\Psi)$ 
+	Observe, that $(J,\Psi) = 0$ in $C_{2}^{3}$, since $ (1 2)$ is an odd permutation and  $(1 2) (J,\Psi)$ is isomorphic to $(J,\Psi)$ 
 	via the isomorphism mirroring along the vertical passing through the blue and purple vertex.
 
 	$(G,\Phi)$ however is not trivial which can be seen as follows : 
 	\todo[inline]{show that}
 \end{eg}
 
-To turn these spaces into a chain complex we define a differential as follows:
-\begin{definition}
-	Let $(G,\Phi) = (G, \{e_1,\ldots,e_{p}\} )$ be a forested graph. Then let
-	\begin{align*}
-		\partial_{C}(G,\Phi) = \sum_{i=1}^{p} (-1)^{i} (G / e_{i}, \Phi \setminus \{e_i\}),\\
-		\partial _{R}(G,\Phi) = \sum_{i=1}^{p} (-1)^{i} (G,\Phi \setminus \{e_{i}\}) 
-	\end{align*}
-	where if $\sigma: E(\Phi) \to \{1,\ldots,p\} $ is the orientation on $\Phi$ the orientation $\tau: E(\Phi \setminus \{e_{i}\}) \to \{1,\ldots,p-1\} $ 
-	on $\Phi \setminus \{e_{i}\}$ is given by 
+Before we construct the chain complex we show that the $C^{n}$ are finitely generated and thus so are the $C_{k}^{n}$.
+
+\begin{theorem}
+	For all $n$, $C^{n}$ is finitely generated and for $C_{k}^{n} = 0 \forall k > 2n-3$. 
+\end{theorem}
+
+\begin{proof}
+	We have the following general fact
 	\[
-		\tau(e) = \begin{cases}
+		2 \abs{E} = \sum_{v \in V} \deg{v}
+	.\] 
+	Using that admissible graphs have vertex-valency $\geq 3$ and rearranging yields $\abs{E} \geq \frac{3}{2} \abs{V}$.
+	From Proposition \ref{prop:rank} we get that $\abs{E} = \abs{V} + n-1$.
+	Combining yields
+	\[
+		\abs{V} + n -1 \geq \frac{3}{2} \abs{V} \Leftrightarrow 2 (n-1) \geq \abs{V}
+	\] 
+	and plugging in the above in the identity from the Proposition yields $\abs{E} \leq 3 (n-1)$.
+
+	With this we can get a loose upper bound on the amount of admissible graphs.
+	As every graph can be written as incidence matrix and each entry is $\leq \abs{E}$ we get that there are maximally
+	$\abs{E}^{\abs{V}^2}$ many different incidence matrices for graphs with  $\abs{V}$ vertices.
+	As every graph corresponds to an incidence matrix this also gives an upper bound on the number of different graphs with $\abs{V}$ vertices.
+
+	Thus the maximal possible number of admissible graphs of rank $n$ is bounded by
+	\[
+		\sum_{k=1}^{2(n-1)} (3 (n-1))^{k^2} 
+	\] 
+	As on each graph there also only exists a finite number of forests and each of them has a finite number of orientations we get that
+	$C^{n}$ is finitely generated.
+
+	That $C_{k}^{n} = 0 \forall k > 2n -3$ follows from the bound on the number of vertices and the fact that a forest in a graph has maximally $\abs{V} - 1$ edges.
+\end{proof}
+
+\begin{remark}
+	Notice that the constraint of vertex-valency $\geq 3$ in the definition of admissible graphs is necessary for $C^{n}$ being finitely generated.
+	As else we can consider the following family of graphs:
+	\ctikzfig{./tikzit/infinite_admissible_graphs}
+	They all have rank $n$ (which can be checked via the Euler characteristic), are $2$-edge-connected and not isomorphic as they have different number of vertices/edges.
+\end{remark}
+
+\begin{remark}
+	The bound on the $C_{k}^{n}$ can not be improved as the graph $J$ from the example above with the tree extended by the edge between purple and green has rank $3$ and
+	tree size $3$ which equals $2 \cdot 3 -3$.
+\end{remark}
+
+To construct our chain complex we fix the rank $n$ and define a differential as follows:
+\begin{definition}
+	Let $(G,\Phi,\sigma) = (G, \{e_1,\ldots,e_{k}\},\sigma)$ be a forested graph. Then let $\partial_{C}, \partial_{R}: C_{k}^{n} \to C_{k-1}^{n}$ be given by
+	\begin{align*}
+		\partial_{C}(G,\Phi) &= \sum_{i = 1}^{k} (-1)^{k} (G / e_{i}, \Phi \setminus \{e_{i}\}, \sigma_{e_{i}}),\\
+		\partial _{R}(G,\Phi) &= \sum_{k = 1}^{k} (-1)^{k} (G,\Phi \setminus \{e_{i}\}, \sigma_{e_{i}}) 
+	\end{align*}
+	where $\sigma_{e_{i}}: \Phi \ \{e\} \to \{1,\ldots,k-1\}$ is given by
+	\[
+		\sigma_{e_{i}}(e) = \begin{cases}
 			\sigma(e) & \text{ if }\sigma(e) < i\\
 			\sigma(e) - 1 & \text{ if } \sigma(e) > i
 		\end{cases}
 	.\]
 	Notice that the case $\sigma(e) = i$ can't happen as $e_{i}$ is not contained in $\Phi \setminus \{e_{i}\}$. 
 	Finally define the boundary map $\partial = \partial_{C} - \partial_{R}$.
-	\todo[inline]{Is this renumbering correct or do we have to move $e_{i}$ first to the end of the orientation and then remove it inducing a sign of $-1^{i-1}$}
+	%\todo[inline]{Is this renumbering correct or do we have to move $e_{i}$ first to the end of the orientation and then remove it inducing a sign of $-1^{i-1}$}
 \end{definition}
 
 \begin{proposition}
 	$\partial$ is well-defined and $\partial^2 = 0$.
 \end{proposition}
 
+For better readability we will omit the orientation $\sigma$ in the proof.
 \begin{proof}
+
+
+	We proof the result in three steps:\\
+	\textbf{Step 1:} Contracting an edge of a graph doesn't change the Euler characteristic as both the vertex number and the edge number decreases by one.
+	Thus $\partial_{C}$ preserves the rank of the graph. Moreover the vertex-valency stays $\geq 3$ and the graph continues to be $2$-edge-connected.
+	Hence is admissible.
+	Moreover $\partial_{C}$ as well as $\partial_{R}$ remove one edge from each graph. Thus decreasing
+	$k$ by $1$. Hence both maps are well-defined from $C^{n}_{k}$ to $C^{n}_{k-1}$ and thus so is $\partial$.
+
 	Let $(G,\Phi) = (G, \{e_1,\ldots,e_{p}\})$ be a forested graph and denote the edges in $\Phi \setminus \{e_{i}\}$ by $\{e_1',\ldots,e_{p-1}'\}$.
-	Firstly we observe that 
+	For the consecutive steps we need the following observations:
 	\[
 		(G / e_{i}) /  e_{j}' = \begin{cases}
 			(G / e_{j}) / e_{i-1}' & \text{ if } i > j\\
@@ -156,7 +260,12 @@ To turn these spaces into a chain complex we define a differential as follows:
 			(\Phi \setminus \{e_{j+i}\}) \setminus \{e_{i}'\} & \text{ if } i \leq j
 		\end{cases}
 	\]
-	Now we compute:
+
+	\textbf{Step 2:}\enskip
+	\emph{Claim:}
+		$\partial_{C}^2 = 0$ and $\partial_{R}^2 = 0$
+
+	We compute:
 	\begin{align*}
 		\partial_{C}^2 &= \partial_{C} \sum_{i=1}^{p} (-1)^{i}(G / e_{i}, \Phi \setminus \{e_{i}\})
 		=  \sum_{i=1}^{p} \sum_{j=1}^{p-1} (-1)^{i+j}((G / e_{i}) / e_{j}', (\Phi \setminus \{e_{i}\} ) \setminus \{e_{j}'\})  \\
@@ -171,6 +280,8 @@ To turn these spaces into a chain complex we define a differential as follows:
 	\end{align*}
 	This last expression is the same as the left sum above but with opposite sign. Thus they cancel and we have shown $\partial_{C}^2 = 0$.
 	The same argument shows that $\partial_{R}^2 = 0$.
+
+	\textbf{Step 3:} \emph{Claim:} $\partial_{C} \partial_{R} - \partial_{R} \partial_{C} = 0$
 
 	For the mixed terms we compute as follows
 	\begin{align*}
@@ -192,7 +303,7 @@ To turn these spaces into a chain complex we define a differential as follows:
 	In $(\dagger)$ we used the substitution  $m = i-1$,  $l = j$ on the left and  $m = i$,  $k = j+1$ on the right sum.
 	Comparing the sums in $(*)$ and $(* *)$ we see that they differ by a sign and thus cancel. Hence  $\partial_{C} \partial_{R} - \partial_{R} \partial_{C} = 0$.
 
-	Combining the above we get:
+	Combining Step 2 and 3 we get:
 	\[
 		\partial^2 = (\partial_{C} - \partial_{R})^2 = \partial_{C}^2 - (\partial_{C} \partial_{R} + \partial_{R} \partial_{C}) + \partial_{R}^2 = 0
 	\]
@@ -216,6 +327,35 @@ Thus the spaces $(C_{\bullet})$ with the differential $\partial_{\bullet}$ form 
 	as $\partial_{\bullet}^2=0$ also $H_2 - G_3 \in \ker \partial_{\bullet}$
 \end{eg}
 
+\subsection{Cubical Chain Complex}
+The above constructed complex $C_{\bullet}$ can also be viewed as a cubical chain complex.
+Here we think of a graph $(G,\Phi) = (G, \{e_1,\ldots,e_{k}\})  \in C_{k}$ as the $k$-dimensional $[0,1]$-cube embedded in $R^{k}$.
+The Graph $G_{\Phi}$ where all edges in  $\Phi$ have been collapsed sits at the origin and the graph $G$ where all edges have been removed from  $\Phi$ but not collapsed
+sits diagonally opposite at  $(1,\ldots,1)$.
+We can assign a graph to every face in the following way:
+Consider a face $F$ of dimension $n < k$, let $bF$ be its barycenter. Then $bF \in \{0,1 / 2, 1\}^{k}$ and denote by $bF_{i}$ its $i$-th coordinate.
+Moreover let
+\[
+	C := \{e_{i} \in \Phi \mid bF_{i} = 0\} \qq{and} R := \{e_{i} \in \Phi \mid bF_{i} = 1\}  
+.\] 
+Then the graph associated to $F$ is given by $(G / C, \Phi \setminus (C \cup D)$.
+Thus an edge gets contracted if $bF_{i} = 0$ and an edge gets removed from $\Phi$ but not contracted if $bF_{i} = 1$.
+Now if a face is of dimension $n$ then $n$ coordinates of $bF$ equal  $1 / 2$ and thus the resulting graph has a forest of size $n$ and is hence in $C_{n}$.
+
+The above description gives us a bijection between the reduced graphs of $G$ and the half integral points.
+Denote the reduced graph of $G$ associated to $bF$ by $G_{bF}$. Then we can define the boundary operator via this bijection as follows:
+
+\todo[inline]{Formulate this}
+
+To visualize this construction we consider the following example:
+\begin{eg}
+	Consider again the graph $J$ from example \ref{ex:gAuto} with the forest $\Phi$ given by an edge between the top and middle vertex and
+	between the left and write vertex.
+	Then its $2$-dimensional cube is given as below:
+	\ctikzfig{./tikzit/cubicalCCEx}
+\end{eg}
+
+\newpage
 \printbibliography
 
 \include{Extras.tex}
