@@ -9,6 +9,7 @@
 \begin{document}	
 
 \section{Introduction}
+\todo[inline]{Out Fn. Reason for interest in forested graph complexes}
 In the following we mainly follow Bartholdi's hands on approach from \cite{bartholdi16} to define the forested graph complex.
 The more general definition by Conant and Vogtmann from \cite{conant03} has been postponed as it is too complex and unintuitive for the beginning.
 Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's draft [].
@@ -24,6 +25,7 @@ Inspired by this similar examples for the forested graph complex are presented.
 	A graph is $n$-edge-connected if it remains connected after removing  $n-1$ arbitrary edges.
 
 	A graph is said to be \emph{$n$-regular} if every vertex has valency $n$ i.e. for every vertex the number of incident edges is $n$.
+	The valency of a vertex $v \in G$ is often also called degree of $v$ and denoted by $\deg(v)$.
 
 	For a subset of edges $\Phi$ of $G$ we denote by $G / \Phi$ the graph quotient, which is the quotient space of the CW complex $G$ over its topological subspace $\Phi$.
 \end{definition}
@@ -36,24 +38,33 @@ Inspired by this similar examples for the forested graph complex are presented.
 \end{remark}
 
 \begin{definition}
-	A sub graph $G'$ of a graph $G$ is a subcomplex of the CW complex $G$. As a subcomplex is itself a CW complex of dimension smaller or equal to the original complex,
+	A subgraph $G'$ of a graph $G$ is a subcomplex of the CW-complex $G$. As a subcomplex is itself a CW-complex of dimension smaller or equal to the original complex,
 	 $G'$ is itself a graph.
+
+	A cycle in a graph $G$ is a subgraph that is homeomorphic to $S^1$. A tree is a
+	connected graph containing no cycles. A forest is a collection of disjoint trees.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{thm:fg_graph}
 	Let $G$ be a graph. Then its fundamental group $\pi_{1}(G)$ is isomorphic to a free group.
 \end{theorem}
 By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
 
+The following proof is from \cite[p. 43f]{hatcher00}
 \begin{proof}
-	
+	Let $G$ be a graph. W.l.o.g. $G$ is connected as else we consider each connected component separately. 
+	Then let $T$ be a spanning tree on $G$ i.e. $T$ is a tree containing every vertex of $G$.
+	Then $T$ is contractible.
+	Now choose for every $e_{\alpha} \in E \setminus T$ an open neighborhood $A_{\alpha}$ of $T \cup e_{\alpha}$ that deformation retracts onto $T \cup e_{\alpha}$.
+	The intersection of such $A_{\alpha}$ is $T$ and thus contractible. Moreover as $G$ is connected as a graph $A_{\alpha}$ and $T$ are path connected.
+	Now the $A_{\alpha}$ form an open cover of $G$ and as $T$ is simply connected by Van Kampen's Theorem we get that $\pi_{1}(G) = *_{\alpha} \pi_{1}(A_{\alpha})$.
+	Finally $A_{\alpha}$ deformation retracts onto $S^{1}$ and thus $\pi_{1}(A_{\alpha}) = \Z$. Now there are exactly $\abs{E} - \abs{T}$ many $A_{\alpha}$,
+	which as $T$ is a spanning tree results in $\pi_1(G)$ being free on $\abs{E} - \abs{V} + 1$ generators.
 \end{proof}
 
-For a proof of this see for example \cite[p. 43f]{hatcher00}
-
-To understand the rank better we will need the following definition
+To understand the rank better we will need the following definitions
 \begin{definition}
-	For a finite Cw-complex $X$ the \emph{Euler Characteristic} is defined as the alternating sum
+	For a finite CW-complex $X$ the \emph{Euler Characteristic} is defined as the alternating sum
 	\[
 		\chi(X) = k_0 - k_1 + k_2 - \ldots
 	\] 
@@ -61,25 +72,44 @@ To understand the rank better we will need the following definition
 \end{definition}
 For graphs we thus get $\chi (G) = k_0 - k_1$, as they are $1$-dimensional which is equal to $\chi(G) = \abs{V} - \abs{E}$.
 
+\begin{definition}
+	Let $G$ be a graph. Then its cycle space is the set of even-degree subgraphs of $G$. 
+	This space forms a vector space over $\F_2$ where the vector addition is given by thesymmetric difference of two or more subgraphs.
+	A basis of this space is called cycle basis and two cycles are independent if they are linearly independent in the vector space.
+\end{definition}
+
 The following proposition 
 \begin{proposition}\label{prop:rank}
-	The rank of a graph $G$ is equal to:
+	Let $G$ be a connected graph. Then the following are equal:
 	\begin{enumerate}
-		\item The number of independent cycles in $G$
+		\item The rank of $G$
+		\item The number of independent cycles in $G$ i.e. the size of the cycle basis of $G$.
 		\item The first Betti number i.e. the rank of $H_{1}(G)$
 		\item $1 - \chi(G) = \abs{E} - \abs{V} + 1$
 	\end{enumerate}
 \end{proposition}
 
-\begin{proof}[Proof Sketch]
-	That the rank is equal to the first Betti number follows from Hurewicz Theorem and the fact that the abelianisation of the free group of rank $n$
-	is the free abelian group of rank  $n$.
+For the proof we will need the following Lemma:
+\begin{lemma}
+	Let $A$ be a set. Then the abelianization of the free group on $A$ is isomorphic the free abelian group of $A$.
+\end{lemma}
 
-	The equality of $2)$ and $3)$ follows from the argument for the fundamental group in \cite[p. 43f]{hatcher00}.
-	Lastly a proof of the equality of $1)$ and $3)$ can be found in \cite[p. 37-40]{harary69}.
+\begin{proof}
+	Consider the space $X = \bigvee_{a \in A} S^{1}$. Then by Van Kampen's Theorem $\pi_1(X) = *_{a \in A} \Z$.
+	On the other hand we have $H_1(X) = \bigoplus_{a \in A} H_1(S_1) = \bigoplus_{a \in A} \Z$ which follows from the relative Homeomorphism Theorem.
+	Now using Hurewicz Theorem we get that the abelianization of$\pi_1(X)$ is isomorphic to $H_1(X)$ and thus the desired statement
 \end{proof}
 
-Lastly a \emph{tree} is a connected graph which contains no cycles and a \emph{forest} is a collection of disjoint trees.
+\begin{proof}[Proof of the Theorem]
+	(1) = (4): This was shown in the proof of Theorem \ref{thm:fg_graph}.\\
+	(1) = (3): From Hurewicz Theorem we get that the abelianization of $(\pi_{1}(G)$ is equal to $H_{1}(G)$
+	and thus by the previous Lemma that the rank of $\pi_1(G)$ is equal to the rank of $H_1(G)$ which is the first Betti number.\\
+	(4)= (2)\footnote{This proof is based on Harary's proof in \cite[p. 37-40]{harary69}.}:
+		Consider again the sets $A_{\alpha}$ from the proof of Theorem \ref{thm:fg_graph}. Then each of them deformation retracts onto a cycle in $G$.
+	Let $Z(T)$ be the set of cycles obtained in this way. Then  $Z(T)$ is independent as each cycle contains an edge not contained in any other cycle.
+	Moreover every cycle $Z$ in $G$ can be written as the symmetric difference over the cycles corresponding to the edges in $(E \setminus T) \cap Z$.
+	Thus $Z(T)$ spans the cycle space and consequently is a cycle basis. Now the size of $Z(T)$ is given by $\abs{E} - \abs{V} + 1$ and thus we conclude.
+\end{proof}
 
 \begin{definition}
 	Let $G,H$ be two graphs. A map $f: V(G) \to V(H)$ is said to be a graph isomorphism if $f$ is a bijection such that
@@ -97,6 +127,36 @@ Lastly a \emph{tree} is a connected graph which contains no cycles and a \emph{f
 	The graph quotient $G / \{e,f,g\}$ is given by $J$.
 \end{eg}
 
+Finally we introduce the notion of degree of a graph also sometimes called excess.
+\begin{definition}
+	Let $G$ be a connected graph of rank $n$ with vertex-valency $\geq 3$. Its \emph{degree} is given by
+	\[
+		\deg(G) := \sum_{v \in V(G)} (\deg(v) - 3)
+	.\] 
+\end{definition}
+
+\begin{proposition}
+	We have the following identities
+	\begin{enumerate}
+		\item $\deg(G) = 2 \abs{E} - 3 \abs{V}$
+		\item $\abs{V} = 2n -2 - \deg(G)$
+		\item $\abs{E} = 3n - 3 - \deg(G)$
+		\item $G$ is $3$-regular $\Leftrightarrow \deg(G) = 0$.
+	\end{enumerate}	
+\end{proposition}
+
+\begin{proof}
+	A general fact in graph theory is that $2 \abs{E} = \sum_{v \in V} \deg(V)$.
+	Combining this with the definition of degree we directly get the first identity.
+	Using Proposition \ref{prop:rank} and the first identity we have
+	\begin{align*}
+		2 n -2 - \deg(G) &= 2 \abs{E} - 2 \abs{V} + 2 - 2 - 2\abs{E} + 3 \abs{V} = \abs{V}\\
+		3 n -3 - \deg(G) &= 3 \abs{E} - 3 \abs{V} + 3 - 3 - 2\abs{E} + 3 \abs{V} = \abs{E}
+	\end{align*}
+	which proves the second and third. The last statement follows as every element in the sum of the degree is positive.
+	Thus $\deg(G) = 0$ if and only if every term is $0$ and thus iff $\deg(v) = 0 \forall v \in V$.
+\end{proof}
+
 \subsection{Forested graph Complex}
 Let $F_{n}$ denote the free group of rank $n.$
 \begin{definition}
@@ -107,23 +167,13 @@ Let $F_{n}$ denote the free group of rank $n.$
 We often just write admissible graph for an admissible graph of rank $n$.
 
 \begin{definition}
-	Let $G$ be an admissible graph. Its \emph{degree} is given by
-	\[
-		\deg(G) := \sum_{v \in V(G)} (\deg(v) - 3)
-	.\] 
-\end{definition}
-
-In particular $G$ has $2n -2 - \deg(G)$ vertices and $3n -3 - \deg(G)$ edges and is $3$-regular iff $\deg(G) = 0$.
-
-\begin{definition}
 	An orientation $\sigma$ of a graph $G$ is an ordering of the edges i.e. $\sigma$ is an injective function from $E(G)$ to $\{1,\ldots,\abs{E(G)}\}$.
 	We call the tuple $(G,\sigma)$ an oriented graph and note that $\on{Sym}$ acts on $(G,\sigma)$ by $\pi (G,\sigma) = (G,\pi \sigma)$ for $\pi \in \on{Sym}$.
 \end{definition}
 
-If it is clear that $(G,\sigma)$ is an oriented graph we often just write $G$.
-
 \begin{definition}
-	A \emph{forested graph} is a tripple $(G,\Phi,\sigma)$ where $G$ is an admissible graph $\Phi$ is a forest on $G$ and  $\sigma$ is an orientation on $\Phi$.
+	A \emph{forested graph} is a triple $(G,\Phi,\sigma)$ where $G$ is an admissible graph $\Phi$ is a subset of edges that spans a forest on $G$ and 
+	$\sigma$ is an orientation on $\Phi$.
 
 	A map $f$ between two forested graphs $(G,\Phi, \sigma) \to (H,\Psi, \tau)$ is said to be a forested graph isomorphism if 
 	$f$ is a graph isomorphism on $G$,  $f(\Phi) = \Psi$ and $\sigma = \tau \circ f $
