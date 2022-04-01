@@ -5,15 +5,34 @@
 \usepackage{biblatex}
 \input{./tikzit/test.tikzstyles}
 \addbibresource{./references.bib}
+\usepackage[stable]{footmisc}
 
 \begin{document}	
 
-\section{Introduction}
-\todo[inline]{Out Fn. Reason for interest in forested graph complexes}
-In the following we mainly follow Bartholdi's hands on approach from \cite{bartholdi16} to define the forested graph complex.
-The more general definition by Conant and Vogtmann from \cite{conant03} has been postponed as it is too complex and unintuitive for the beginning.
-Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's draft [].
-Inspired by this similar examples for the forested graph complex are presented.
+\section{Introduction\footnotemark}
+\footnotetext{This section follows closely Vogtmann's survey article \cite{vogtmann16}}
+Free groups are one of the most basic examples of infinite finitely-generated groups.
+The automorphism groups of free groups are of particular interest since they are tied to many other areas of mathematics.
+The automorphism group $\aut(G)$ of a group $G$ can be separated into the inner automorphism group $\on{Inn}(G)$,
+the group of automorphisms that arise from conjugation, and the outer automorphism group $\out(G)$, the quotient of  $\aut(G)$ by $\on{Inn}(G)$.
+
+The standard approach to study $\out(G)$ has been to study it via its action on some topological space.
+For $\out(F_{n})$ the outer automorphism group of the free group on $n$ generators this space $\mathcal{X}_{n}$ known as "Outer space"
+has been introduced by Culler and Vogtmann in []. As the points of the Outer space correspond to finite graphs with fundamental group $F_{n}$,
+the structure of Outer Space is connected to such diverse areas as the study of Lie algebras of derivations, degenerations of algebraic varieties,
+the computation of Feynman integrals, and the statistics of phylogenetic trees.
+
+A central concept of the Outer space is its spine $K_{n}$ which is an equivariant deformation retract of $\mathcal{X}_{n}$.
+By being able to compute the rational homology of $K_{n} / \out(F_{n})$ on can also compute $\out(F_{n})$.
+By identifying the spine $K_{n}$ with a cube complex one arrives at the forested graph complex
+which has been introduced by Conant and Vogtmann in \cite{conant03}.
+
+The forested graph complex is also the main focus of this paper.
+We will begin by defining basic concepts of graphs, the Outer space and the forested graph complex as well as show the connection via the cube complex.
+
+Afterwards we will focus on Morita's classes which are an infinite sequence of cocycles representing potentially nontrivial cohomology classes $\mu_{k} \in H^{4k}(\out(F_{2k+2})$.
+
+
 
 \section{Basic Definitions}
 \subsection{Graphs}
@@ -157,7 +176,56 @@ Finally we introduce the notion of degree of a graph also sometimes called exces
 	Thus $\deg(G) = 0$ if and only if every term is $0$ and thus iff $\deg(v) = 0 \forall v \in V$.
 \end{proof}
 
+\subsection{The Outer space}
+We closely follow Vogtmann's definition from \cite[p. 2 ff.]{vogtmann16}
+\begin{definition}
+	By a \emph{metric graph} we mean a finite connected graph with positive real edge lengths, equipped with the path metric.
+	We fix a model rose $R_{n}$ (a graph with one vertex and $n$ petals), and identify the petals of $R_{n}$ with a homotopy
+	equivalence $g: R_{n} \to  G$ called a \emph{marking}; the marking serves to identify the fundamental group of $G$ with $F_{n}$.
+	Marked graphs $(g,G)$ and $(g',G')$ are considered the same if there is an isometry  $f: G \to G'$ with $g \circ g$ homotopic to $g'$.
+
+	To get a finite dimensional space we assume $G$ has no uni- and bivalent vertices (see Theorem \ref{thm:finGenCn}).
+	Moreover we normalize our objects i.e. we assume the sum of edge lengths to be $1$ and assume that $G$ is $2$-connected.
+\end{definition}
+To make  $\mathcal{X}_{n}$ a space we need to define a topology. We proceed as follows: 
+For every marked graph $(g,G)$ we define the open simplex $\sigma(g,G)$ as the set obtained by varying the edge lenghts of $G$,
+keeping their sum equal to $1$.
+The simplex  $\sigma(g',G')$ is then a \emph{face} of $\sigma(g,G)$ if $(g',G')$ can be obtained from $(g,G)$ by collapsing some edges to points.
+
+Finally $\mathcal{X}_{n}$ is the quotient space obtained from the disjoint uniion of the open simplices $\sigma(g,G)$ by face identification.
+
+However not all faces of these simplices are in $\mathcal{X}_{n}$.
+To rectify this we replace each open simplex $\sigma(g,G)$ by a closed simplex $\overline{\sigma}(g,G)$ and take
+the quotient as before. This new space, denoted by $\mathcal{X}^{*}_{n}$, is a simplical complex and called the \emph{simplical closure} of Outer space.
+The points in $\mathcal{X^{*}_{n}}$ which are not in $\mathcal{X_{n}}$ are said to be at infinity.
+
+ Now the group $\out(F_{n})$ acts on $\mathcal{X_{n}}$ by changing the marking in particular
+ any $\varphi \in \out(F_{n})$ can be realized by a homotopy equivalence $f: R_{n} \to R_{n}$
+ by mapping petals to each other according to their identification with generators of $F_{n}$.
+ The group action by $\varphi$ on $(g,G)$ is then defined by
+ \[
+	 (g,G) \varphi = (g \circ f, G)
+ .\] 
+
+ Finally $\mathcal{X}_{n}$ contains an equivariant deformation retract $K_{n}$, the spine of Outer space.
+ It is a subcomplex of the barycentric subdivision of the simplical closure $\mathcal{X}_{n}^{*}$, consisting of simplices spanned by vertices which are not at infinity.
+
+ I.e. it is the grometric realisation of the partially ordered set of open simplices $\sigma(g,G)$ in $\mathcal{X}_{n}$, where 
+ the partial order is given by the face relation.
+ \todo{Understand and rephrase}
+
+ We have the following vital result proved by Culler and Vogtmann in []\todo{cite}
+ \begin{theorem}
+	 $\mathcal{X}_{n}$ is contractible and the action of $\out(F_{n})$ is proper.
+	 The spine $K_{n}$ is an equivariant deformation retract of dimension $2 n - 3$ with compact quotient
+ \end{theorem}
+
 \subsection{Forested graph Complex}
+This construction mainly follow Bartholdi's simplified definiton from \cite{bartholdi16}.
+Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's draft [].
+Inspired by this similar examples for the forested graph complex are presented.
+\todo{fix ordering and citation}
+
 Let $F_{n}$ denote the free group of rank $n.$
 \begin{definition}
 	An \emph{admissible graph of rank $n$} is a $2$-edge-connected graph $G$ with fundamental group isomorphic to $F_{n}$ and with vertex-valency $\geq 3$.
@@ -219,7 +287,7 @@ where $k$ denotes the forest size and $n$ the rank.
 
 Before we construct the chain complex we show that the $C^{n}$ are finitely generated and thus so are the $C_{k}^{n}$.
 
-\begin{theorem}
+\begin{theorem}\label{thm:finGenCn}
 	For all $n$, $C^{n}$ is finitely generated and for $C_{k}^{n} = 0 \forall k > 2n-3$. 
 \end{theorem}
 

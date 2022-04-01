@@ -146,21 +146,21 @@
 % Definition
 
 \theoremstyle{definition}
-\newtheorem*{definition}{\definitionname}
-\newtheorem*{attention}{\danger\ \attentionname}
-\newtheorem*{eg}{\examplename}
+\newtheorem{definition}{\definitionname}[section]
+\newtheorem{attention}[definition]{\danger\ \attentionname}
+\newtheorem{eg}[definition]{\examplename}
 
 \theoremstyle{plain}
-\newtheorem*{theorem}{\theoremname}
-\newtheorem*{proposition}{\propositionname}
-\newtheorem*{corollary}{\corollaryname}
-\newtheorem*{lemma}{\lemmaname}
+\newtheorem{theorem}[definition]{\theoremname}
+\newtheorem{proposition}[definition]{\propositionname}
+\newtheorem{corollary}[definition]{\corollaryname}
+\newtheorem{lemma}[definition]{\lemmaname}
 
 \theoremstyle{remark}
-\newtheorem*{remark}{\remarkname}
-\newtheorem*{claim}{\claimname}
-\newtheorem*{notation}{\notationname}
-\newtheorem*{convention}{\conventionname}
+\newtheorem{remark}[definition]{\remarkname}
+\newtheorem{claim}[definition]{\claimname}
+\newtheorem{notation}[definition]{\notationname}
+\newtheorem{convention}[definition]{\conventionname}
 
 
 
