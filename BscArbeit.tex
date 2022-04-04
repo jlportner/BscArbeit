@@ -473,6 +473,124 @@ To visualize this construction we consider the following example:
 	\ctikzfig{./tikzit/cubicalCCEx}
 \end{eg}
 
+\section{Morita-Cycles}
+\todo[inline]{Formulate this whole section better and in an easier way}
+The goal of this section is to show that there exist a cycle in ever $C_{n}$.
+For this we define the Morita-Cycle graphs and show that there exists a chain of those graphs that vanishes under the boundary $\partial$.
+
+ \begin{definition}
+	 A general \emph{Morita-Cycle} $M_{n}$, for $n \geq 3$ odd, is a forested graph $(G,\Phi,\tau)$ defined as follows:
+	 $G$ has $2\cdot n$ vertices which form two separate cycles each of order $n$.
+	 More over each vertex of one cycle is connected via an edge to exactly one vertex of the other cycle.
+	 The forest $\Phi$ are $n-1$ edges in each of the two cycles.
+	 The orientation is some numbering of the edges in $\Phi$. 
+
+	 We call one of the cycles the "left" and the other one the "right" cycle.
+	 Moreover the missing edge in the cycle from the left/right tree in $\Phi$ is called missing left/right edge.
+\end{definition}
+As the cycles have $n$ edges each. The forest $\Phi$ has exactly two trees of size $n-1$ of the form of a line.
+For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism and thus vanishes.
+
+\begin{definition}
+	We say a Morita-Cycle $M_{n}$ is (drawn) in standard form if the edges in the forest in the left cycle are numbered in ascending order
+	starting with $1$ on one edge adjacent to the missing left edge and ending with $n-1$ on the other edge adjacent to the missing left.
+	For the right cycle the edges in $\Phi$ are numbered analogous just from $n$ to $2n-1$. 
+	Moreover when we draw the graph we always draw the missing left/right to the outside of the cycles.
+
+	To make this definition more intuitive it is best to view the illustration below of a Morita cycle $M_{5}$ in standard form.
+\end{definition}
+
+\begin{proposition}
+	Every Morita-Cycle $M_{n}$ in standard form is fully determined by $n$ and a permutation $\sigma \in S_{n}$. Thus we denote 
+	such a Graph by $M_{n}(\sigma)$.
+	Moreover every general Morita-Cycle $M_{n}$ can be written in standard form.
+\end{proposition}
+
+\begin{proof}
+	We show the second part of the statement first.
+	By renumbering the edges in the forest we can always get to the desired ordering. Notice that this might introduce a factor of $-1$
+	if the renumbering is an odd permutation.
+	Now by rotating the left/right cycle in our drawing we can also get the missing left/right in its desired place.
+
+	Now to the first part of the proposition.
+	By the properties of the standard form the left and right cycle are fully fixed and equal for all Morita-Cycles of size $2 n$.
+	Thus the only difference are the edges between the two cycles.
+	For these we number the nodes in the left cycle from $1$ to $n$ from top to bottom
+	and on the right from $n$ to  $2 n$ also from top to bottom. Then each edge can be identified with a pair $(u,v)$.
+	If we now define the permutation $\sigma: {1,\ldots,n} \to {1,n}$ via $\sigma(u) = v - n$.
+
+	On the other side if we have a permutation $\sigma \in S_{n}$. We can define the edges between the left and right cycle
+	by $(i,\sigma(i) +n)$ for $i \in {1,\ldots,n}$.
+\end{proof}
+
+\begin{eg}
+	Below is a Morita-Cycle of order $5$ in standard form defined by the permutation $(12)(345)$.
+	\ctikzfig{./tikzit/morita_cycle_5}
+\end{eg}
+
+\begin{theorem}
+	For all $n \in \N_{\geq 3}$ odd it holds that 
+	\[
+		\partial\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right) = 0
+	.\] 
+\end{theorem}
+
+We prove this statement in two parts first for $\partial_{R}$ and then for $\partial_{C}$, from which the final result follows.
+Moreover when we talk about a Morita-Cycle we will always talk about it drawn in its standard form.
+\begin{proof}[Proof for $\delta_C$]
+	Let $(H,\Psi,\eta)$ be in the sum $\partial_{C}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
+	Then as it is an element of the boundary of some Morita-Cycle it has to
+	have one vertex of degree 4, in either the left or right cycle and the same cycle has order $n-1$ and only $n-2$ edges in the tree.
+	W.l.o.g. we assume that the edge is missing in the left tree as else one can mirror along the horizontal
+	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation. An example of $H$ is given in the figure below on the left.
+
+	Now assume that the vertex of degree $4$ is the $k$-th one from the top. An example is shown in the figure below on the left for $k = 2$.
+	Then there exist exactly two Morita-Cycles in standard form in whose boundary $H$ lies. 
+	One is obtained by splitting the vertex $k$ into two where each new vertex contains one edge from the forest and one connecting to the right cycle.
+	Moreover the two new nodes get connected by an edge which is also added to the forest and given the number $k$ in the ordering.
+	All other edges with ordering number  $> k $ get increased by one. Lets denote this Morita-Cycle by $M_{n}(\sigma)$.
+	The other one is obtained in the same way however the two edges connecting to the right cycle are permuted i.e.
+	if the new node is numbered by $k+1$ then this Morita-Cycle equals $M_{n}((k\ k+1)\sigma)$.
+	Examples for both are also shown in the figure below in the middle and right respectively.
+
+	Thus we see that the two permutations $\sigma$ and $(k\ k+1) \sigma$ have opposite parity and thus $M_{n}(\sigma)$ and $M_{n}((k\ k+1) \sigma)$ have
+	opposite sign in the sum from the theorem. Thus the elements in their boundary corresponding to $H$ also have opposite sign and hence cancel.
+
+	As $H$ was arbitrary an arbitrary element of the sum we get that every summand has coefficient $0$ and the sum vanishes.
+	\ctikzfig{./tikzit/morita_cycle_dC}
+\end{proof}
+
+\begin{proof}[Proof for $\partial_{R}$]
+	Again let $(H,\Psi,\eta)$ be in the sum $\partial_{R}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
+	Let $\sigma$ be the edge assignment between the left and right cycle as described in the standard form.
+	Then $H$ is a Morita-Cycle in standard form missing one edge in either the left or right tree.
+	W.l.o.g. we assume that the edge is missing in the left tree as else one can mirror along the horizontal
+	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
+
+	Now assume the $k$-th edge from the top is missing an example is shown in the figure below on the left for $k = 2$.
+	Then there are exactly two Morita-Cycles in standard form which have $H$ in their boundary.
+	One where the $k$-th edge has been added to the forest with number $k$ in the ordering i.e. $M_{n}(\sigma)$.
+	And the other where the most left edge has been added, the numbering in the left cycle been changed such that $1$ is the first edge 
+	after the missing one, the left most edge has order $n-k$ and so on.
+	Notice that the second graph is not drawn in standard form. To bring it in standard form one has to "rotate" the left cycle
+	by $k$ nodes counter clockwise. Each of this rotation induces the permutation $(1 \ldots n)$ on the edges i.e.
+	the resulting Morita cycle is given by $M_{n}(\tau) := M_{n}(\sigma (1 \ldots n)^{k})$.
+	Examples for both are also shown in the figure below in the middle and right respectively.
+	
+	As $(1 \ldots n)$ for $n$ odd has even parity $\tau$ and $\sigma$ have the same parity and thus $M_{n}(\tau)$ and $M_{n}(\sigma)$ have the same sign
+	in the sum from the theorem. 
+	Finally taking the boundary the elements corresponding to $H$ have different orientations.
+	The element in $\partial_{R}(M_{n}(\sigma))$ is exactly $H$ with sign $(-1)^{k}$. The element in $\partial_{R}(M_{n}(\tau))$ however 
+	differs from $H$ by the permutation $(1 \ldots n-2)^{k - 1}$ with even parity as $n-2$ is odd and has sign $(-1)^{n-k}$.
+	Now for $n$ odd if $k$ is even $n-k$ is odd and vice versa. Thus the elements corresponding to $H$ have opposite sign and cancel.
+
+	As $H$ was an arbitrary element in the sum we get that every summand has coefficient $0$ and the sum vanishes.
+
+	\ctikzfig{./tikzit/morita_cycle_dR}
+
+	Thus we have shown the result for both $\partial_{C}$ and $\partial_{R}$ and as $\partial = \partial_{C} - \partial_{R}$ it also follows for $\partial$.
+\end{proof}
+
 \newpage
 \printbibliography
 
