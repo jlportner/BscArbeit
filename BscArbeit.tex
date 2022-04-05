@@ -16,14 +16,15 @@ The automorphism groups of free groups are of particular interest since they are
 The automorphism group $\aut(G)$ of a group $G$ can be separated into the inner automorphism group $\on{Inn}(G)$,
 the group of automorphisms that arise from conjugation, and the outer automorphism group $\out(G)$, the quotient of  $\aut(G)$ by $\on{Inn}(G)$.
 
-The standard approach to study $\out(G)$ has been to study it via its action on some topological space.
-For $\out(F_{n})$ the outer automorphism group of the free group on $n$ generators this space $\mathcal{X}_{n}$ known as "Outer space"
-has been introduced by Culler and Vogtmann in []. As the points of the Outer space correspond to finite graphs with fundamental group $F_{n}$,
-the structure of Outer Space is connected to such diverse areas as the study of Lie algebras of derivations, degenerations of algebraic varieties,
+Most often the inner automorphism groups are well understood.  To understand the outer automorphism groups
+the standard approach has been to study it via its action on some topological space.
+For the outer automorphism group of the free group on $n$ generators $\out(F_{n})$ the space $\mathcal{X}_{n}$ known as "Outer space"
+has been introduced by Culler and Vogtmann in \cite{vogtmann86}. As the points of the Outer space correspond to finite graphs with fundamental group $F_{n}$,
+the structure of Outer space is connected to such diverse areas as the study of Lie algebras of derivations, degenerations of algebraic varieties,
 the computation of Feynman integrals, and the statistics of phylogenetic trees.
 
 A central concept of the Outer space is its spine $K_{n}$ which is an equivariant deformation retract of $\mathcal{X}_{n}$.
-By being able to compute the rational homology of $K_{n} / \out(F_{n})$ on can also compute $\out(F_{n})$.
+By being able to compute the rational homology of $K_{n} / \out(F_{n})$ one can also compute $\out(F_{n})$.
 By identifying the spine $K_{n}$ with a cube complex one arrives at the forested graph complex
 which has been introduced by Conant and Vogtmann in \cite{conant03}.
 
@@ -51,7 +52,7 @@ Afterwards we will focus on Morita's classes which are an infinite sequence of c
 
 \begin{remark}
 	Note that in classical graph theory these types of graphs are called multigraphs, as they are allowed to have multiple edges between vertices as well as loops.
-	The word graph there normally refers to simple graphs which don't allow multi-edges and loops.
+	The word graph there normally refers to simple graphs which do not allow multi-edges and loops.
 
 	In the context of algebraic topology however multigraphs are needed and thus the word graph here denotes multigraphs.
 \end{remark}
@@ -69,8 +70,8 @@ Afterwards we will focus on Morita's classes which are an infinite sequence of c
 \end{theorem}
 By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
 
-The following proof is from \cite[p. 43f]{hatcher00}
 \begin{proof}
+	The following proof is from \cite[p. 43f]{hatcher00}
 	Let $G$ be a graph. W.l.o.g. $G$ is connected as else we consider each connected component separately. 
 	Then let $T$ be a spanning tree on $G$ i.e. $T$ is a tree containing every vertex of $G$.
 	Then $T$ is contractible.
@@ -93,18 +94,22 @@ For graphs we thus get $\chi (G) = k_0 - k_1$, as they are $1$-dimensional which
 
 \begin{definition}
 	Let $G$ be a graph. Then its cycle space is the set of even-degree subgraphs of $G$. 
-	This space forms a vector space over $\F_2$ where the vector addition is given by thesymmetric difference of two or more subgraphs.
+	This space forms a vector space over $\F_2$ where the vector addition is given by the symmetric difference of two or more subgraphs.
 	A basis of this space is called cycle basis and two cycles are independent if they are linearly independent in the vector space.
 \end{definition}
+
+\begin{remark}
+	The cycle space is equal to the one homology group of $G$ with coefficients in $\F_2$ i.e. $H_1(G,\F_2)$.
+\end{remark}
 
 The following proposition 
 \begin{proposition}\label{prop:rank}
 	Let $G$ be a connected graph. Then the following are equal:
 	\begin{enumerate}
-		\item The rank of $G$
+		\item The rank of $G$.
 		\item The number of independent cycles in $G$ i.e. the size of the cycle basis of $G$.
-		\item The first Betti number i.e. the rank of $H_{1}(G)$
-		\item $1 - \chi(G) = \abs{E} - \abs{V} + 1$
+		\item The first Betti number i.e. the rank of $H_{1}(G)$.
+		\item $1 - \chi(G) = \abs{E} - \abs{V} + 1$.
 	\end{enumerate}
 \end{proposition}
 
@@ -116,14 +121,14 @@ For the proof we will need the following Lemma:
 \begin{proof}
 	Consider the space $X = \bigvee_{a \in A} S^{1}$. Then by Van Kampen's Theorem $\pi_1(X) = *_{a \in A} \Z$.
 	On the other hand we have $H_1(X) = \bigoplus_{a \in A} H_1(S_1) = \bigoplus_{a \in A} \Z$ which follows from the relative Homeomorphism Theorem.
-	Now using Hurewicz Theorem we get that the abelianization of$\pi_1(X)$ is isomorphic to $H_1(X)$ and thus the desired statement
+	Now using Hurewicz Theorem we get that the abelianization of $\pi_1(X)$ is isomorphic to $H_1(X)$ and thus the desired statement
 \end{proof}
 
 \begin{proof}[Proof of the Theorem]
 	(1) = (4): This was shown in the proof of Theorem \ref{thm:fg_graph}.\\
-	(1) = (3): From Hurewicz Theorem we get that the abelianization of $(\pi_{1}(G)$ is equal to $H_{1}(G)$
+	(1) = (3): From Hurewicz Theorem we get that the abelianization of $\pi_{1}(G)$ is equal to $H_{1}(G)$
 	and thus by the previous Lemma that the rank of $\pi_1(G)$ is equal to the rank of $H_1(G)$ which is the first Betti number.\\
-	(4)= (2)\footnote{This proof is based on Harary's proof in \cite[p. 37-40]{harary69}.}:
+	(4) = (2)\footnote{This proof is based on Harary's proof in \cite[p. 37-40]{harary69}.}:
 		Consider again the sets $A_{\alpha}$ from the proof of Theorem \ref{thm:fg_graph}. Then each of them deformation retracts onto a cycle in $G$.
 	Let $Z(T)$ be the set of cycles obtained in this way. Then  $Z(T)$ is independent as each cycle contains an edge not contained in any other cycle.
 	Moreover every cycle $Z$ in $G$ can be written as the symmetric difference over the cycles corresponding to the edges in $(E \setminus T) \cap Z$.
@@ -148,14 +153,14 @@ For the proof we will need the following Lemma:
 
 Finally we introduce the notion of degree of a graph also sometimes called excess.
 \begin{definition}
-	Let $G$ be a connected graph of rank $n$ with vertex-valency $\geq 3$. Its \emph{degree} is given by
+	Let $G$ be a connected graph of rank $n$ with vertex-valency $\geq 3$. Its \emph{degree} is defined by
 	\[
 		\deg(G) := \sum_{v \in V(G)} (\deg(v) - 3)
 	.\] 
 \end{definition}
 
 \begin{proposition}
-	We have the following identities
+	Let $G = (V,E)$ be a graph of rank $n$. Then we have the following identities:
 	\begin{enumerate}
 		\item $\deg(G) = 2 \abs{E} - 3 \abs{V}$
 		\item $\abs{V} = 2n -2 - \deg(G)$
@@ -165,41 +170,42 @@ Finally we introduce the notion of degree of a graph also sometimes called exces
 \end{proposition}
 
 \begin{proof}
-	A general fact in graph theory is that $2 \abs{E} = \sum_{v \in V} \deg(V)$.
+	By counting half edges we get $2 \abs{E} = \sum_{v \in V} \deg(V)$.
 	Combining this with the definition of degree we directly get the first identity.
 	Using Proposition \ref{prop:rank} and the first identity we have
 	\begin{align*}
 		2 n -2 - \deg(G) &= 2 \abs{E} - 2 \abs{V} + 2 - 2 - 2\abs{E} + 3 \abs{V} = \abs{V}\\
 		3 n -3 - \deg(G) &= 3 \abs{E} - 3 \abs{V} + 3 - 3 - 2\abs{E} + 3 \abs{V} = \abs{E}
 	\end{align*}
-	which proves the second and third. The last statement follows as every element in the sum of the degree is positive.
-	Thus $\deg(G) = 0$ if and only if every term is $0$ and thus iff $\deg(v) = 0 \forall v \in V$.
+	which proves the second and third. The last statement follows as every element in the sum of the degree is non-negative.
+	Thus $\deg(G) = 0$ if and only if every term is $0$ and thus if and only if every vertex has valency $3$.
 \end{proof}
 
 \subsection{The Outer space}
 We closely follow Vogtmann's definition from \cite[p. 2 ff.]{vogtmann16}
 \begin{definition}
 	By a \emph{metric graph} we mean a finite connected graph with positive real edge lengths, equipped with the path metric.
-	We fix a model rose $R_{n}$ (a graph with one vertex and $n$ petals), and identify the petals of $R_{n}$ with a homotopy
+	We fix a model rose $R_{n}$ (a graph with one vertex and $n$ petals), and identify the petals of $R_{n}$ with the generators
+	of the free group $F_{n}$. A point in $\mathcal{X}_{n}$ is then a metric graph $G$ together with a homotopy
 	equivalence $g: R_{n} \to  G$ called a \emph{marking}; the marking serves to identify the fundamental group of $G$ with $F_{n}$.
-	Marked graphs $(g,G)$ and $(g',G')$ are considered the same if there is an isometry  $f: G \to G'$ with $g \circ g$ homotopic to $g'$.
+	Marked graphs $(g,G)$ and $(g',G')$ are considered the same if there is an isometry  $f: G \to G'$ with $f \circ g$ homotopic to $g'$.
 
 	To get a finite dimensional space we assume $G$ has no uni- and bivalent vertices (see Theorem \ref{thm:finGenCn}).
 	Moreover we normalize our objects i.e. we assume the sum of edge lengths to be $1$ and assume that $G$ is $2$-connected.
 \end{definition}
 To make  $\mathcal{X}_{n}$ a space we need to define a topology. We proceed as follows: 
-For every marked graph $(g,G)$ we define the open simplex $\sigma(g,G)$ as the set obtained by varying the edge lenghts of $G$,
+For every marked graph $(g,G)$ we define the open simplex $\sigma(g,G)$ as the set obtained by varying the edge lengths of $G$,
 keeping their sum equal to $1$.
 The simplex  $\sigma(g',G')$ is then a \emph{face} of $\sigma(g,G)$ if $(g',G')$ can be obtained from $(g,G)$ by collapsing some edges to points.
 
-Finally $\mathcal{X}_{n}$ is the quotient space obtained from the disjoint uniion of the open simplices $\sigma(g,G)$ by face identification.
+Finally $\mathcal{X}_{n}$ is the quotient space obtained from the disjoint union of the open simplices $\sigma(g,G)$ by face identification.
 
 However not all faces of these simplices are in $\mathcal{X}_{n}$.
 To rectify this we replace each open simplex $\sigma(g,G)$ by a closed simplex $\overline{\sigma}(g,G)$ and take
 the quotient as before. This new space, denoted by $\mathcal{X}^{*}_{n}$, is a simplical complex and called the \emph{simplical closure} of Outer space.
-The points in $\mathcal{X^{*}_{n}}$ which are not in $\mathcal{X_{n}}$ are said to be at infinity.
+The points in $\mathcal{X}^{*}_{n}$ which are not in $\mathcal{X}_{n}$ are said to be at infinity.
 
- Now the group $\out(F_{n})$ acts on $\mathcal{X_{n}}$ by changing the marking in particular
+ Now the group $\out(F_{n})$ acts on $\mathcal{X}_{n}$ by changing the marking in particular
  any $\varphi \in \out(F_{n})$ can be realized by a homotopy equivalence $f: R_{n} \to R_{n}$
  by mapping petals to each other according to their identification with generators of $F_{n}$.
  The group action by $\varphi$ on $(g,G)$ is then defined by
@@ -210,38 +216,35 @@ The points in $\mathcal{X^{*}_{n}}$ which are not in $\mathcal{X_{n}}$ are said 
  Finally $\mathcal{X}_{n}$ contains an equivariant deformation retract $K_{n}$, the spine of Outer space.
  It is a subcomplex of the barycentric subdivision of the simplical closure $\mathcal{X}_{n}^{*}$, consisting of simplices spanned by vertices which are not at infinity.
 
- I.e. it is the grometric realisation of the partially ordered set of open simplices $\sigma(g,G)$ in $\mathcal{X}_{n}$, where 
+ In other language, $K_{n}$ is the geometric realisation of the partially ordered set of open simplices $\sigma(g,G)$ in $\mathcal{X}_{n}$, where 
  the partial order is given by the face relation.
- \todo{Understand and rephrase}
 
- We have the following vital result proved by Culler and Vogtmann in []\todo{cite}
+ We have the following vital result providing the relationship between $\mathcal{X}_{n}$ and $\out(F_{n})$. This was proved by Culler and Vogtmann in \cite{vogtmann86}.
  \begin{theorem}
 	 $\mathcal{X}_{n}$ is contractible and the action of $\out(F_{n})$ is proper.
 	 The spine $K_{n}$ is an equivariant deformation retract of dimension $2 n - 3$ with compact quotient
  \end{theorem}
 
 \subsection{Forested graph Complex}
-This construction mainly follow Bartholdi's simplified definiton from \cite{bartholdi16}.
-Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's draft [].
+The forested graph complex has first been introduced by Conant and Vogtmann in \cite{conant03}.
+We however follow the simplified construction and definition of the forested graph complex given by Bartholdi in \cite{bartholdi16}.
+Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's and McKay's draft \cite{natan01}.
 Inspired by this similar examples for the forested graph complex are presented.
-\todo{fix ordering and citation}
 
-Let $F_{n}$ denote the free group of rank $n.$
+Let $F_{n}$ denote the free group of rank $n$. We also denote by $\mathbb{S}_{n}$ the symmetric group of degree $n$.
 \begin{definition}
 	An \emph{admissible graph of rank $n$} is a $2$-edge-connected graph $G$ with fundamental group isomorphic to $F_{n}$ and with vertex-valency $\geq 3$.
 \end{definition}
 
-
 We often just write admissible graph for an admissible graph of rank $n$.
 
 \begin{definition}
-	An orientation $\sigma$ of a graph $G$ is an ordering of the edges i.e. $\sigma$ is an injective function from $E(G)$ to $\{1,\ldots,\abs{E(G)}\}$.
-	We call the tuple $(G,\sigma)$ an oriented graph and note that $\on{Sym}$ acts on $(G,\sigma)$ by $\pi (G,\sigma) = (G,\pi \sigma)$ for $\pi \in \on{Sym}$.
-\end{definition}
+	Let $G = (V,E)$ be a graph. An ordering on its edges is a bijective function $\sigma$ from $E$ to $\{1,\ldots,\abs{E(G)}\}$.
+	Notice that $\mathbb{S}_{\abs{E}}$ acts on $\sigma$ by $\pi \circ \sigma$ for $\pi \in \mathbb{S}_{n}$.
+	We call the tuple $(G,\sigma)$ an ordered graph and note that $\mathbb{S}_{\abs{E}}$ acts on $(G,\sigma)$ by $\pi (G,\sigma) = (G,\pi \sigma)$ for $\pi \in \mathbb{S}_{\abs{E}}$.
 
-\begin{definition}
 	A \emph{forested graph} is a triple $(G,\Phi,\sigma)$ where $G$ is an admissible graph $\Phi$ is a subset of edges that spans a forest on $G$ and 
-	$\sigma$ is an orientation on $\Phi$.
+	$\sigma$ is an ordering on $\Phi$ i.e. $\sigma : \Phi \to \{1,\ldots,\abs{\Phi}\}$.
 
 	A map $f$ between two forested graphs $(G,\Phi, \sigma) \to (H,\Psi, \tau)$ is said to be a forested graph isomorphism if 
 	$f$ is a graph isomorphism on $G$,  $f(\Phi) = \Psi$ and $\sigma = \tau \circ f $
@@ -251,48 +254,69 @@ We know want to construct our graph complex. For this we remember the notion of 
 \begin{definition}
 	A graded vector space, is a vector space $V$ and with a decomposition $\left(V_{n}\right)^{\infty}_{n=0} $ such that
 	\[
-		V = \bigoplus_{k=0}^{\infty} V_{n}
-	\] 
+		V = \bigoplus_{k=0}^{\infty} V_{k}
+	.\] 
 \end{definition}
 
 We know consider the $\Q$-vector space $C$ spanned by isomorphism classes of forested graphs, subject to the relation
 \[
-	(G,\pi \Phi) = \sgn{\pi} \cdot (G,\Phi) \qq{for all} \pi \in \on{Sym}(k)
+	(G,\Phi, \pi \circ \sigma) = \sgn{\pi} \cdot (G,\Phi, \sigma) \qq{for all} \pi \in \mathbb{S}_{n}(\abs{\Phi})
 .\]
-Observe that if $(G,\Phi) \simeq (G,\pi \Phi)$ for an odd permutation $\pi$ then $(G,\Phi) \simeq (G,\pi \Phi) = - (G,\Phi)$ and thus $(G,\Phi) = 0$ in  $C_{k}$.
+Under this relation we call $\sigma$ an orientation.
+Observe that if $(G,\Phi, \sigma) \simeq (G,\Phi, \pi \circ \sigma)$ for an odd permutation $\pi$ then 
+$(G,\Phi, \sigma) \simeq (G,\Phi, \pi \circ \sigma) = - (G,\Phi, \sigma)$ and thus $(G,\Phi, \sigma) = 0$ in  $C_{k}$.
 
 We can define the following three gradings on $C$:
  \begin{itemize}
 	\item Let $C^{n} \subseteq C$ be the subspace spanned by forested graphs of rank $n$. Then clearly  $C^{n} \cap C^{m} = \emptyset$ for $n \neq m$ and
-		as every graph has a rank, we get that the $C^{n}$ form a grading of $C$.
-	\item Let $C_{k} \subseteq C$ be the subspace spanned by forested graphs with a forest of size $k$. Clearly this also yields a decomposition of $C$ into a direct sum
-		and thus yields another grading of $C$
-	\item Let  $C_{d} \subseteq C$ be the subspace spanned by forested graphs of degree $d$. Once again this yields a grading on $C$
+		as every graph has a rank, we get that the $C^{n}$ form a grading on $C$.
+	\item Let $C_{k} \subseteq C$ be the subspace spanned by forested graphs $(G,\Phi,\sigma)$ with $k = \abs{\Phi}$. Clearly this also yields a decomposition of $C$ into a direct sum
+		and thus yields another grading on $C$.
+	\item Let  $C_{d} \subseteq C$ be the subspace spanned by forested graphs of degree $d$. Once again this yields a grading on $C$.
 \end{itemize}
 In the following we will mostly be concerned with the first two gradings. In particular we will consider the double-grading $C_{k}^{n}$,
 where $k$ denotes the forest size and $n$ the rank. 
 
 \begin{eg}
-	Consider the graphs $G, J$ as in Example \ref{ex:gAuto}. Then $G$ and $J$ are admissible graphs of rank $3$ and $2$. Thus if we equip them with oriented forests $\Phi, \Psi$ as below 
-	(where the red edges represent the forest and the numbers the orientation) we get forested graphs.
+	Consider the graphs $G, J$ as in Example \ref{ex:gAuto}. Then $G$ and $J$ are admissible graphs of rank $4$ and $3$. Thus if we equip them with ordered forests 
+	$(\Phi,\sigma), (\Psi,\tau)$ as below 
+	(where the red edges represent the forest and the numbers the orientation) we get forested graphs in $C^{4}_{4}$ and $C^{3}_{2}$ respectively.
 
 	\ctikzfig{./tikzit/forested_graph_automorphism}
 
 	Observe, that $(J,\Psi) = 0$ in $C_{2}^{3}$, since $ (1 2)$ is an odd permutation and  $(1 2) (J,\Psi)$ is isomorphic to $(J,\Psi)$ 
 	via the isomorphism mirroring along the vertical passing through the blue and purple vertex.
 
-	$(G,\Phi)$ however is not trivial which can be seen as follows : 
-	\todo[inline]{show that}
+	$(G,\Phi)$ however is not trivial as the automorphism group is given by the identity,
+	mirroring along the vertical, exchanging inner and outer vertices and their composition.
+	None of these automorphisms induce an odd permutation and hence $(G,\Phi)$ does not vanish.
 \end{eg}
 
 Before we construct the chain complex we show that the $C^{n}$ are finitely generated and thus so are the $C_{k}^{n}$.
 
 \begin{theorem}\label{thm:finGenCn}
-	For all $n$, $C^{n}$ is finitely generated and for $C_{k}^{n} = 0 \forall k > 2n-3$. 
+	For all $n$, $C^{n}$ is finitely generated and $C_{k}^{n} = 0$ for all $k > 2n-3$. 
 \end{theorem}
 
+To prove this theorem we first need the following lemma:
+\begin{lemma}
+	For $v,e \in \N$ There are only finitely many admissible graphs $G = (V,E)$ with $\abs{V} \leq v$ vertices and $ \abs{E} \leq e$ edges.
+\end{lemma}
+
 \begin{proof}
-	We have the following general fact
+	Every graph on $n$ vertices can be written as incidence matrix and each entry is $\leq e$ if the graph has maximally $e$ edges. 
+	Thus there are maximally $e^{v^2}$ many different incidence matrices for graphs with  $v$ vertices and maximally $e$ edges.
+	As every graph corresponds to an incidence matrix this also gives an upper bound on the number of different graphs with $v$ vertices.
+
+	Thus the maximal possible number of admissible graphs with $\leq v$ vertices and $\leq e$ edges is bounded by
+	\[
+		\sum_{k=1}^{v} e^{k^2} 
+	\]
+	which is finite.
+\end{proof}
+
+\begin{proof}[Proof of Theorem]
+	By counting half edges we have
 	\[
 		2 \abs{E} = \sum_{v \in V} \deg{v}
 	.\] 
@@ -304,16 +328,8 @@ Before we construct the chain complex we show that the $C^{n}$ are finitely gene
 	\] 
 	and plugging in the above in the identity from the Proposition yields $\abs{E} \leq 3 (n-1)$.
 
-	With this we can get a loose upper bound on the amount of admissible graphs.
-	As every graph can be written as incidence matrix and each entry is $\leq \abs{E}$ we get that there are maximally
-	$\abs{E}^{\abs{V}^2}$ many different incidence matrices for graphs with  $\abs{V}$ vertices.
-	As every graph corresponds to an incidence matrix this also gives an upper bound on the number of different graphs with $\abs{V}$ vertices.
-
-	Thus the maximal possible number of admissible graphs of rank $n$ is bounded by
-	\[
-		\sum_{k=1}^{2(n-1)} (3 (n-1))^{k^2} 
-	\] 
-	As on each graph there also only exists a finite number of forests and each of them has a finite number of orientations we get that
+	Thus by the above lemma we have that there are only finitely many graphs with $\abs{V} \leq 2 (n-1)$ and $\abs{E} \leq 3(n-1)$.
+	As each graph also only has a finite number of forests and each of them has a finite number of orientations we get that
 	$C^{n}$ is finitely generated.
 
 	That $C_{k}^{n} = 0 \forall k > 2n -3$ follows from the bound on the number of vertices and the fact that a forest in a graph has maximally $\abs{V} - 1$ edges.
@@ -335,19 +351,18 @@ To construct our chain complex we fix the rank $n$ and define a differential as 
 \begin{definition}
 	Let $(G,\Phi,\sigma) = (G, \{e_1,\ldots,e_{k}\},\sigma)$ be a forested graph. Then let $\partial_{C}, \partial_{R}: C_{k}^{n} \to C_{k-1}^{n}$ be given by
 	\begin{align*}
-		\partial_{C}(G,\Phi) &= \sum_{i = 1}^{k} (-1)^{k} (G / e_{i}, \Phi \setminus \{e_{i}\}, \sigma_{e_{i}}),\\
-		\partial _{R}(G,\Phi) &= \sum_{k = 1}^{k} (-1)^{k} (G,\Phi \setminus \{e_{i}\}, \sigma_{e_{i}}) 
+		\partial_{C}(G,\Phi,\sigma) &= \sum_{i = 1}^{k} (-1)^{i} (G / e_{i}, \Phi \setminus \{e_{i}\}, \sigma_{e_{i}}),\\
+		\partial _{R}(G,\Phi,\sigma) &= \sum_{i = 1}^{k} (-1)^{i} (G,\Phi \setminus \{e_{i}\}, \sigma_{e_{i}}) 
 	\end{align*}
-	where $\sigma_{e_{i}}: \Phi \ \{e\} \to \{1,\ldots,k-1\}$ is given by
+	where $\sigma_{e_{i}}: \Phi \setminus \{e_{i}\} \to \{1,\ldots,k-1\}$ is given by
 	\[
 		\sigma_{e_{i}}(e) = \begin{cases}
 			\sigma(e) & \text{ if }\sigma(e) < i\\
 			\sigma(e) - 1 & \text{ if } \sigma(e) > i
 		\end{cases}
 	.\]
-	Notice that the case $\sigma(e) = i$ can't happen as $e_{i}$ is not contained in $\Phi \setminus \{e_{i}\}$. 
+	Notice that the case $\sigma(e) = i$ cannot happen as $e_{i}$ is not contained in $\Phi \setminus \{e_{i}\}$. 
 	Finally define the boundary map $\partial = \partial_{C} - \partial_{R}$.
-	%\todo[inline]{Is this renumbering correct or do we have to move $e_{i}$ first to the end of the orientation and then remove it inducing a sign of $-1^{i-1}$}
 \end{definition}
 
 \begin{proposition}
@@ -359,10 +374,10 @@ For better readability we will omit the orientation $\sigma$ in the proof.
 
 
 	We proof the result in three steps:\\
-	\textbf{Step 1:} Contracting an edge of a graph doesn't change the Euler characteristic as both the vertex number and the edge number decreases by one.
+	\textbf{Step 1:} Contracting an edge of a graph does not change the Euler characteristic as both the vertex number and the edge number decreases by one.
 	Thus $\partial_{C}$ preserves the rank of the graph. Moreover the vertex-valency stays $\geq 3$ and the graph continues to be $2$-edge-connected.
-	Hence is admissible.
-	Moreover $\partial_{C}$ as well as $\partial_{R}$ remove one edge from each graph. Thus decreasing
+	Hence it is admissible.
+	Moreover $\partial_{C}$ as well as $\partial_{R}$ remove one edge from each forest. Thus decreasing
 	$k$ by $1$. Hence both maps are well-defined from $C^{n}_{k}$ to $C^{n}_{k-1}$ and thus so is $\partial$.
 
 	Let $(G,\Phi) = (G, \{e_1,\ldots,e_{p}\})$ be a forested graph and denote the edges in $\Phi \setminus \{e_{i}\}$ by $\{e_1',\ldots,e_{p-1}'\}$.
@@ -372,7 +387,7 @@ For better readability we will omit the orientation $\sigma$ in the proof.
 			(G / e_{j}) / e_{i-1}' & \text{ if } i > j\\
 			(G / e_{j+1}) / e_{i}' & \text{ if } i \leq j
 		\end{cases}
-		\qq{ as well as }
+		\qq{ and }
 		(\Phi \setminus \{e_{i}\}) \setminus \{e_{j}'\}  = \begin{cases}	
 			(\Phi \setminus \{e_{j}\}) \setminus \{e_{i-1}'\} & \text{ if } i > j\\
 			(\Phi \setminus \{e_{j+i}\}) \setminus \{e_{i}'\} & \text{ if } i \leq j
@@ -423,11 +438,11 @@ For better readability we will omit the orientation $\sigma$ in the proof.
 
 	Combining Step 2 and 3 we get:
 	\[
-		\partial^2 = (\partial_{C} - \partial_{R})^2 = \partial_{C}^2 - (\partial_{C} \partial_{R} + \partial_{R} \partial_{C}) + \partial_{R}^2 = 0
+		\partial^2 = (\partial_{C} - \partial_{R})^2 = \partial_{C}^2 - (\partial_{C} \partial_{R} + \partial_{R} \partial_{C}) + \partial_{R}^2 = 0\qedhere
 	\]
 \end{proof}
 
-Thus the spaces $(C_{\bullet})$ with the differential $\partial_{\bullet}$ form a chain complex.
+Thus the spaces $(C^{n}_{\bullet})$ with the differential $\partial_{\bullet}$ form a chain complex.
 
 \begin{eg}
 	Once again we consider the graph $(G,\Phi)$ from above and calculate its boundary operator:
@@ -475,7 +490,7 @@ To visualize this construction we consider the following example:
 
 \section{Morita-Cycles}
 \todo[inline]{Formulate this whole section better and in an easier way}
-The goal of this section is to show that there exist a cycle in ever $C_{n}$.
+The goal of this section is to show that there exist a cycle in every $C_{n}$.
 For this we define the Morita-Cycle graphs and show that there exists a chain of those graphs that vanishes under the boundary $\partial$.
 
  \begin{definition}
@@ -483,13 +498,13 @@ For this we define the Morita-Cycle graphs and show that there exists a chain of
 	 $G$ has $2\cdot n$ vertices which form two separate cycles each of order $n$.
 	 More over each vertex of one cycle is connected via an edge to exactly one vertex of the other cycle.
 	 The forest $\Phi$ are $n-1$ edges in each of the two cycles.
-	 The orientation is some numbering of the edges in $\Phi$. 
+	 The orientation $\tau$ is some numbering of the edges in $\Phi$. 
 
 	 We call one of the cycles the "left" and the other one the "right" cycle.
 	 Moreover the missing edge in the cycle from the left/right tree in $\Phi$ is called missing left/right edge.
 \end{definition}
 As the cycles have $n$ edges each. The forest $\Phi$ has exactly two trees of size $n-1$ of the form of a line.
-For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism and thus vanishes.
+For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism (mirroring between the two cycles) and thus vanishes.
 
 \begin{definition}
 	We say a Morita-Cycle $M_{n}$ is (drawn) in standard form if the edges in the forest in the left cycle are numbered in ascending order
@@ -517,10 +532,10 @@ For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism an
 	Thus the only difference are the edges between the two cycles.
 	For these we number the nodes in the left cycle from $1$ to $n$ from top to bottom
 	and on the right from $n$ to  $2 n$ also from top to bottom. Then each edge can be identified with a pair $(u,v)$.
-	If we now define the permutation $\sigma: {1,\ldots,n} \to {1,n}$ via $\sigma(u) = v - n$.
+	We now define the permutation $\sigma: {1,\ldots,n} \to {1,n}$ via $\sigma(u) = v - n$.
 
 	On the other side if we have a permutation $\sigma \in S_{n}$. We can define the edges between the left and right cycle
-	by $(i,\sigma(i) +n)$ for $i \in {1,\ldots,n}$.
+	by $(i,\sigma(i) +n)$ for $i \in {1,\ldots,n}$ and get a Morita-Cycle in standard form
 \end{proof}
 
 \begin{eg}
@@ -535,18 +550,18 @@ For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism an
 	.\] 
 \end{theorem}
 
-We prove this statement in two parts first for $\partial_{R}$ and then for $\partial_{C}$, from which the final result follows.
+We prove this statement in two parts first for $\partial_{C}$ and then for $\partial_{R}$, from which the final result follows.
 Moreover when we talk about a Morita-Cycle we will always talk about it drawn in its standard form.
-\begin{proof}[Proof for $\delta_C$]
+\begin{proof}[Proof for $\partial_C$]
 	Let $(H,\Psi,\eta)$ be in the sum $\partial_{C}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
 	Then as it is an element of the boundary of some Morita-Cycle it has to
-	have one vertex of degree 4, in either the left or right cycle and the same cycle has order $n-1$ and only $n-2$ edges in the tree.
+	have precisely one vertex of degree 4, in either the left or right cycle and the same cycle has order $n-1$ and only $n-2$ edges in the tree.
 	W.l.o.g. we assume that the edge is missing in the left tree as else one can mirror along the horizontal
-	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation. An example of $H$ is given in the figure below on the left.
+	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
 
 	Now assume that the vertex of degree $4$ is the $k$-th one from the top. An example is shown in the figure below on the left for $k = 2$.
 	Then there exist exactly two Morita-Cycles in standard form in whose boundary $H$ lies. 
-	One is obtained by splitting the vertex $k$ into two where each new vertex contains one edge from the forest and one connecting to the right cycle.
+	One is obtained by splitting the vertex $k$ into two vertices where each new vertex contains one edge from the forest and one connecting to the right cycle.
 	Moreover the two new nodes get connected by an edge which is also added to the forest and given the number $k$ in the ordering.
 	All other edges with ordering number  $> k $ get increased by one. Lets denote this Morita-Cycle by $M_{n}(\sigma)$.
 	The other one is obtained in the same way however the two edges connecting to the right cycle are permuted i.e.
@@ -556,24 +571,24 @@ Moreover when we talk about a Morita-Cycle we will always talk about it drawn in
 	Thus we see that the two permutations $\sigma$ and $(k\ k+1) \sigma$ have opposite parity and thus $M_{n}(\sigma)$ and $M_{n}((k\ k+1) \sigma)$ have
 	opposite sign in the sum from the theorem. Thus the elements in their boundary corresponding to $H$ also have opposite sign and hence cancel.
 
-	As $H$ was arbitrary an arbitrary element of the sum we get that every summand has coefficient $0$ and the sum vanishes.
+	As $H$ was an arbitrary element of the sum we get that every summand has coefficient $0$ and the sum vanishes.
 	\ctikzfig{./tikzit/morita_cycle_dC}
 \end{proof}
 
 \begin{proof}[Proof for $\partial_{R}$]
 	Again let $(H,\Psi,\eta)$ be in the sum $\partial_{R}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
 	Let $\sigma$ be the edge assignment between the left and right cycle as described in the standard form.
-	Then $H$ is a Morita-Cycle in standard form missing one edge in either the left or right tree.
+	Then $H$ is a Morita-Cycle in standard form missing one edge in either the left or right tree of $\Psi$.
 	W.l.o.g. we assume that the edge is missing in the left tree as else one can mirror along the horizontal
 	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
 
-	Now assume the $k$-th edge from the top is missing an example is shown in the figure below on the left for $k = 2$.
+	Now assume the $k$-th edge from the top is missing from $\Psi$; an example is shown in the figure below on the left for $k = 2$.
 	Then there are exactly two Morita-Cycles in standard form which have $H$ in their boundary.
 	One where the $k$-th edge has been added to the forest with number $k$ in the ordering i.e. $M_{n}(\sigma)$.
-	And the other where the most left edge has been added, the numbering in the left cycle been changed such that $1$ is the first edge 
+	And the other where the left most edge has been added, the numbering in the left cycle been changed such that $1$ is the first edge 
 	after the missing one, the left most edge has order $n-k$ and so on.
 	Notice that the second graph is not drawn in standard form. To bring it in standard form one has to "rotate" the left cycle
-	by $k$ nodes counter clockwise. Each of this rotation induces the permutation $(1 \ldots n)$ on the edges i.e.
+	by $k$ nodes counter clockwise. Each of this rotation induces the permutation $(1 \ldots n)$ on the edges connecting the left and right cycle i.e.
 	the resulting Morita cycle is given by $M_{n}(\tau) := M_{n}(\sigma (1 \ldots n)^{k})$.
 	Examples for both are also shown in the figure below in the middle and right respectively.
 	
@@ -594,6 +609,6 @@ Moreover when we talk about a Morita-Cycle we will always talk about it drawn in
 \newpage
 \printbibliography
 
-\include{Extras.tex}
+%\include{Extras.tex}
 
 \end{document}
