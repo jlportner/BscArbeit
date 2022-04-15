@@ -8,6 +8,120 @@
 \usepackage[stable]{footmisc}
 
 \begin{document}	
+\include{titlepage.tex}
+\tableofcontents
+\newpage
+\section{Introduction}
+As groups are a fundamental concept of mathematics understanding them has been a central aspect ever since their discovery.
+Free groups are then the class of groups where no relation exists between their generators: 
+The elements are words of generators and their inverses. The group relation is given by concatenating words
+and reducing them i.e. if two adjacent elements are inverse to each other they will be omitted.
+The free group on $n$ generators will be denoted by $F_{n}$.
+The importance of free groups now arises from the fact that every group is isomorphic to a quotient group of a free group
+an in particular any finitely generated group is isomorphic to a quotient group of $F_{n}$ for some $n$.
+
+Another way to approach a group $G$ is to understand its automorphism group $\aut(G)$ as it describes $G$'s symmetries.
+Now $\aut(G)$ can be separated into the inner automorphism group $\on{Inn}(G)$,
+the group of automorphisms that arise from conjugation, and the outer automorphism group $\out(G)$, the quotient of  $\aut(G)$ by $\on{Inn}(G)$.
+
+Combining those two aspects it is only natural that mathematicians study the automorphism group of $F_{n}$ since the beginning of the subject.
+The inner automorphism group is well understood and isomorphic to $F_{n}$ itself.
+The outer automorphism group $\out(F_{n})$ however still leaves many open questions.
+As $F_{1} \cong \Z$ ,
+\[
+	\out(F_1) = \out(\Z) = \on{GL}_{1}(\Z)
+.\] 
+For $F_{2}$ Nielsen proved in \cite{nielsen17} that $\out(F_2) \cong \on{GL}_{2}(\Z)$.
+For higher groups only the existence of a surjection $\out(F_{n}) \to \on{GL}_{n}(\Z)$ can be guaranteed.
+
+Historically $\on{GL}_{n}(\Z)$ has been studied by by its action on the symmetric space $\on{SL}_{n}(\R) / \on{SO}_{n}(\R)$.
+Due to the relation between $\out(F_{n})$ and $\on{GL}_{n}(\Z)$ early attempts of the study of the outer automorphism group
+examined its action on $\on{SL}_{n}(\R) / \on{SO}_{n}(\R)$ induced by the above surjection.
+However this action is not proper meaning that inverse of compact sets under the action are not necessarily compact.
+Hence it behaves quite badly and a different approach was needed.
+
+Therefore Culler and Vogtmann introduced a new space $\mathcal{X}_{n}$ known as "Outer space" in \cite{vogtmann86}.
+To understand this space however we first have to introduce basic concepts of graph theory.
+
+\subsection{Graphs}
+\begin{definition}
+	A \emph{graph} $G$ is a finite $1$-dimensional CW complex. The set of edges is denoted by $E(G)$, the set of vertices by  $V(G)$.
+	We call an edge having the same start and end vertex a loop.
+
+	We call a graph \emph{connected} if the CW complex is connected in the topological sense.
+	A graph is $n$-edge-connected if it remains connected after removing  $n-1$ arbitrary edges.
+
+	A graph is said to be \emph{$n$-regular} if every vertex has valency $n$ i.e. for every vertex the number of incident edges is $n$.
+	The valency of a vertex $v \in G$ is often also called degree of $v$ and denoted by $\deg(v)$.
+
+	For a subset of edges $\Phi$ of $G$ we denote by $G / \Phi$ the graph quotient, which is the quotient space of the CW complex $G$ over its topological subspace $\Phi$.
+\end{definition}
+
+\begin{remark}
+	Note that sometimes these types of graphs are called multigraphs, as they are allowed to have multiple edges between vertices as well as loops.
+	The word graph there normally refers to simple graphs which do not allow multi-edges and loops.
+
+	In the context of algebraic topology however multigraphs are needed and thus the word graph here denotes multigraphs.
+\end{remark}
+
+\begin{definition}
+	A subgraph $G'$ of a graph $G$ is a subcomplex of the CW-complex $G$. As a subcomplex is itself a CW-complex of dimension smaller or equal to the original complex,
+	 $G'$ is itself a graph.
+
+	A cycle in a graph $G$ is a subgraph that is homeomorphic to $S^1$. A tree is a
+	connected graph containing no cycles. A forest is a collection of disjoint trees.
+\end{definition}
+
+\begin{theorem}\label{thm:fg_graph}
+	Let $G$ be a graph. Then its fundamental group $\pi_{1}(G)$ is isomorphic to a free group.
+\end{theorem}
+By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
+
+A proof of this theorem will be given later in \ldots
+
+Finally a \emph{metric graph} is a finite connected graph with 
+\todo{graph metric, path metric}
+
+\subsection{Outer space}
+We can now come back to the study of $\out(F_{n})$ and the aforementioned Outer space.
+
+To define Outer space we first consider the graph $R_{n}$ given by one vertex and $n$ edges each forming a loop.
+By Theorem $\ref{thm:fg_graph}$ we can identify $\pi_1(R_{n})$ with the free group $F_{n}$ by
+identifying the generators of $F_{n}$ $x_1,\ldots,x_{n}$ with oriented edges of $R_{n}$.
+Then every reduced word in $F_{n}$ corresponds to a reduced edge-path loop starting and ending at the base-point of $R_{n}$.
+An automorphism $\phi$ on $F_{n}$ is now a homotopy equivalence sending the loop corresponding to $x_{i}$
+to the one identified with $\phi(x_{i})$.
+
+Outer space can now be defined as the set of marked metric graphs $(g,G)$ under an equivalence relation.
+The graphs $(g,G)$ have to satisfy
+\begin{itemize}
+	\item $G$ is a finite graph with vertex valency at least $3$,
+	\item $g: R_{n} \to G$ is a homotopy equivalence called the marking of $G$, and
+	\item each edge has a positive length such that the sum of all
+		edge lengths is one. This turns $G$ into a metric space via the path metric.
+\end{itemize}
+The equivalence relation is given by $(g,G) \equiv (g',G')$ if and only if 
+there exists an isometry $h: G \to G'$ such that $g \circ h$ is homotopic to $g'$.
+
+Intuitively each point $(g,G)$ can be represented by drawing the graph $G$,
+finding a maximal forest $T$ on $G$ and labelling all edges not in $T$ with an orientation
+and an element of $F_{n}$.
+Now the labels determine a map $f: G \to R_{n}$ given by sending $T$ to the vertex of $R_{n}$ and sending
+each edge in $G \setminus T$ to the corresponding loop in $R_{n}$ given by the labelling.
+The labelling is chose in such a way that $f$ is a homotopy inverse to $g$.
+An example is given in the figure below.
+
+To define a topology on $\mathcal{X}_{n}$ we look at the set $\mathcal{C}$ of conjugacy classes of $F_{n}$, the cyclic reduced words.
+Now we can define a map from Outer space $\mathcal{X}_{n}$ to the infinite projective space $\mathbbm{RP}^{\mathcal{C}}$.
+This map assigns to every metric marked graph $(g,G)$
+For every metric marked graph $(g,G) \in \mathcal{X}_{n}$ we assign the cyclically reduced word $w$
+the length of the unique cyclically reduced path loop in $G$ homotopic to $g(w)$.
+The topology is then the subspace topology obtained from RP.
+
+This definition might seem quite ad hoc, however under it $X_{n}$ decomposes nicely into
+a disjoint union of open simplices: 
+
+\newpage
 
 \section{Introduction\footnotemark}
 \footnotetext{This section follows closely Vogtmann's survey article \cite{vogtmann16}}
@@ -36,40 +150,12 @@ Afterwards we will focus on Morita's classes which are an infinite sequence of c
 
 
 \section{Basic Definitions}
-\subsection{Graphs}
-\begin{definition}
-	A \emph{graph} $G$ is a finite $1$-dimensional CW complex. The set of edges is denoted by $E(G)$, the set of vertices by  $V(G)$.
-	We call an edge having the same start and end vertex a loop.
-
-	We call a graph \emph{connected} if the CW complex is connected in the topological sense.
-	A graph is $n$-edge-connected if it remains connected after removing  $n-1$ arbitrary edges.
-
-	A graph is said to be \emph{$n$-regular} if every vertex has valency $n$ i.e. for every vertex the number of incident edges is $n$.
-	The valency of a vertex $v \in G$ is often also called degree of $v$ and denoted by $\deg(v)$.
-
-	For a subset of edges $\Phi$ of $G$ we denote by $G / \Phi$ the graph quotient, which is the quotient space of the CW complex $G$ over its topological subspace $\Phi$.
-\end{definition}
-
-\begin{remark}
-	Note that in classical graph theory these types of graphs are called multigraphs, as they are allowed to have multiple edges between vertices as well as loops.
-	The word graph there normally refers to simple graphs which do not allow multi-edges and loops.
-
-	In the context of algebraic topology however multigraphs are needed and thus the word graph here denotes multigraphs.
-\end{remark}
-
-\begin{definition}
-	A subgraph $G'$ of a graph $G$ is a subcomplex of the CW-complex $G$. As a subcomplex is itself a CW-complex of dimension smaller or equal to the original complex,
-	 $G'$ is itself a graph.
-
-	A cycle in a graph $G$ is a subgraph that is homeomorphic to $S^1$. A tree is a
-	connected graph containing no cycles. A forest is a collection of disjoint trees.
-\end{definition}
+\subsection{Further results on graphs}
 
 \begin{theorem}\label{thm:fg_graph}
 	Let $G$ be a graph. Then its fundamental group $\pi_{1}(G)$ is isomorphic to a free group.
 \end{theorem}
 By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
-
 \begin{proof}
 	The following proof is from \cite[p. 43f]{hatcher00}
 	Let $G$ be a graph. W.l.o.g. $G$ is connected as else we consider each connected component separately. 
@@ -300,22 +386,22 @@ Before we construct the chain complex we show that the $C^{n}$ are finitely gene
 
 To prove this theorem we first need the following lemma:
 \begin{lemma}
-	For $v,e \in \N$ There are only finitely many admissible graphs $G = (V,E)$ with $\abs{V} \leq v$ vertices and $ \abs{E} \leq e$ edges.
+	For $n,m \in \N$ There are only finitely many admissible graphs $G = (V,E)$ with $\abs{V} \leq n$ vertices and $ \abs{E} \leq m$ edges.
 \end{lemma}
 
 \begin{proof}
-	Every graph on $n$ vertices can be written as incidence matrix and each entry is $\leq e$ if the graph has maximally $e$ edges. 
-	Thus there are maximally $e^{v^2}$ many different incidence matrices for graphs with  $v$ vertices and maximally $e$ edges.
-	As every graph corresponds to an incidence matrix this also gives an upper bound on the number of different graphs with $v$ vertices.
+	Every graph on $n$ vertices can be written as incidence matrix and each entry is $\leq m$ if the graph has maximally $m$ edges. 
+	Thus there are maximally $m^{n^2}$ many different incidence matrices for graphs with  $n$ vertices and maximally $m$ edges.
+	As every graph corresponds to an incidence matrix this also gives an upper bound on the number of different graphs with $n$ vertices.
 
-	Thus the maximal possible number of admissible graphs with $\leq v$ vertices and $\leq e$ edges is bounded by
+	Thus the maximal possible number of admissible graphs with $\leq n$ vertices and $\leq m$ edges is bounded by
 	\[
-		\sum_{k=1}^{v} e^{k^2} 
+		\sum_{k=1}^{n} m^{k^2} 
 	\]
 	which is finite.
 \end{proof}
 
-\begin{proof}[Proof of Theorem]
+\begin{proof}[Proof of Theorem \ref{thm:finGenCn}]
 	By counting half edges we have
 	\[
 		2 \abs{E} = \sum_{v \in V} \deg{v}
