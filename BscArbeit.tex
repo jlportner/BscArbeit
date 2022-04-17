@@ -83,7 +83,8 @@ Finally a \emph{metric graph} is a finite connected graph with
 \todo{graph metric, path metric}
 
 \subsection{Outer space}
-We can now come back to the study of $\out(F_{n})$ and the aforementioned Outer space.
+We can now come back to the study of $\out(F_{n})$ and the aforementioned Outer space. 
+For this we follow Vogtmann's survey in \cite{vogtmann02}.
 
 To define Outer space we first consider the graph $R_{n}$ given by one vertex and $n$ edges each forming a loop.
 By Theorem $\ref{thm:fg_graph}$ we can identify $\pi_1(R_{n})$ with the free group $F_{n}$ by
@@ -112,50 +113,104 @@ The labelling is chose in such a way that $f$ is a homotopy inverse to $g$.
 An example is given in the figure below.
 
 To define a topology on $\mathcal{X}_{n}$ we look at the set $\mathcal{C}$ of conjugacy classes of $F_{n}$, the cyclic reduced words.
-Now we can define a map from Outer space $\mathcal{X}_{n}$ to the infinite projective space $\mathbbm{RP}^{\mathcal{C}}$.
+Now we can define a map from Outer space $\mathcal{X}_{n}$ to the infinite projective space $\mathbb{RP}^{\mathcal{C}}$.
 This map assigns to every metric marked graph $(g,G)$
 For every metric marked graph $(g,G) \in \mathcal{X}_{n}$ we assign the cyclically reduced word $w$
 the length of the unique cyclically reduced path loop in $G$ homotopic to $g(w)$.
 The topology is then the subspace topology obtained from RP.
 
 This definition might seem quite ad hoc, however under it $X_{n}$ decomposes nicely into
-a disjoint union of open simplices: 
+a disjoint union of open simplices: Every marked graph $(g,G)$ belongs to the open simplex
+containing all graphs that can be reached by varying the non-zero lengths of edges such that
+the total edge length remains one. The faces of the simplex are then the marked graphs where one edge of $(g,G)$
+has been fully contracted. Of course a contracted edge can be extended again in multiple ways thus connecting
+the different simplices. An example is given in the figure below.
+
+For a marked graph with $k+1$ edges the corresponding simplex is $k$ dimensional.
+Moreover the identification works the other way round to i.e. every open simplex in $X_{n}$ 
+is a face of a maximal simplex which corresponds to a trivalent marked graph.
+Taking the argument from the proof of Theorem \label{thm:finGenCn} we see that the dimension of $\mathcal{X}_{n}$ is equal to $3n -4$.
+
+Now with the Outer space defined we can look at the group action of $\out(F_{n})$ on $\mathcal{X}_{n}$.
+Here $\out(F)_{n}$ acts on $X_{n}$ on the right as follows:
+Every $\phi \in \out(F)_{n}$ induces a map $f: R_{n} \to R_{n}$ by mapping the edge labelled
+by $x$ to the edge labelled by $\phi(x)$.
+Then the right group action is defined by $(g,G) \phi = (g \circ f, G)$.
+
+An inconvenience that arises is that the quotient of $\mathcal{X}_{n}$ by $\out(F)_{n}$ is not compact.
+Resolving this leads us to the next construction.
+
+\subsection{Spine of Outer Space}
+The beginning of this section follows Culler and Vogtmanns original definition from \cite{vogtmann86}.
+
+In a first step we define a more convenient somewhat simpler version of $\mathcal{X}_{n}$ known as reduced Outer space and denote it by $Y_{n}$.
+The points in the subspace $Y_{n}$ are the marked graphs $(g,G)$ not containing any separating edges, i.e.
+no edges $e$ such tat $G \setminus e$ is disconnected.
+An equivariant deformation retraction from $\mathcal{X}_{n}$ to $Y_{n}$ is given by shrinking the lengths of
+the separating edges to zero while uniformly extending the lengths of the other edges in order to preserve the total edge length of one.
+
+We can now define the spine of Outer space $K_{n}$ as follows:
+$K_{n}$ is the maximal full subcomplex of the barycentric subdivision of $Y$ which is disjoint from the boundaries of the open simplices in $Y$.
+The vertices of $K_{n}$ are the barycenters of simplices in $Y_{n}$ i.e. the subspace of $Y_{n}$ containing marked graphs 
+with equal edges length. The deformation retraction from $Y_{n}$ to $K_{n}$ is given by
+collapsing every simplex $\tau$ of the barycentric subdivision of $Y_{n}$ to the face of $\tau$ contained in $K_{n}$.
+This can be done equivariantly.
+Thus $K_{n}$ can be thought of as ignoring the metric structure of $Y_{n}$ and only focusing on its combinatorial structure.
+
+Going the other way if we have to vertices $(g,G)$ and $(g',G')$ in $K_{n}$. Then the open simplex in $X_{n}$ 
+determined by $(g,G)$ is a face of  the one determined by $(g',G')$ exactly when $G$ is obtained from $G'$ 
+by collapsing a forest of edges in $G'$ and  $g$ is homotopic to the composition of $g'$ with the collapsing map.
+This collapsing is also called a forest collapse.
+
+Through this we can determine the dimension of $K_{n}$ as collapsing an edge decreases the number of vertices by $1$.
+Thus with a similar argument as in the proof of Theorem \label{thm:finGenCn} we see that $\dim(K) = 2n -3$.
+An example of a part of the spine of $\mathcal{X}_{2}$ is given below.
+
+From our construction above $K_{n}$ has the structure of a simplical complex where a $k$-simplex
+is a chain of $k$ forest collapses. Coming back to $\out(F_{n})$ acting on spaces; its action on $\mathcal{X}_{n}$ extends to a simplical action on $K_{n}$.
+Culler and Vogtmann proved in \cite{vogtmann86} that this action has finite stabilizers.
+Thus the rational homology of $\out(F_{n})$ can be computed as the quotient of $K_{n}$ by $\out(F_{n})$
+\[
+	H_{\bullet}(\out(F_{n},\Q) \cong H_{\bullet}(K_{n}/ \out(F_{n}),\Q)
+.\] 
+
+In order to calculate this homology we turn $K_{n}$ into a cube complex i.e. a CW-complex where the cells are homeomorphic
+to Euclidean cubes and the attaching maps identify faces with lower dimensional cubes via homeomorphisms.
+For a forest $\Phi$ in $G$ with $k$ edges we can now define the $k$-cube:
+From $\Phi$ we get a chain of $k$-forest collapses by collapsing each edge in $\Phi$ at a time.
+This yields a $k$-simplex. Collapsing the edges in another order yields another $k$-simplex.
+All these different $k$-simplices can now be fit together to triangulate an $k$-dimensional cube.
+Thus every $k$-cube is given by a graph $G$ and a forest $\Phi$ of size $k$.
+The faces of dimension $k-1$ are the graphs obtained from $G$ where one edge in $\Phi$ has been collapsed.
+An example is given in the figure below.
+
+Viewing $K_{n}$ as a cube complex with one cube for every triple $(g,G,\Phi)$ we can define an orientation up to even permutation
+via ordering the edges of $\Phi$. Then the rational homology of $K_{n} / \out(F_{n})$ can be
+computed from a chain complex with one generator for each pair $(G,\Phi)$ that has no orientation
+reversing-automorphism.
+
+\subsection{The Forested graph complex}
+This chain complex is generally known as the forested graph complex and has been
+introduced by Conant and Vogtmann in \cite{conant03}. In this introductory section
+we will describe the original construction. In the later chapter we are going to
+introduce a more practical hands-on but equivalent definition from \cite{conant08}.
+
+
+
+\subsection{Known homology of $\out(F_{n})$}
+In this final section of the introduction we try to summarize the known homology of $\out(F_{n})$.
 
 \newpage
 
-\section{Introduction\footnotemark}
-\footnotetext{This section follows closely Vogtmann's survey article \cite{vogtmann16}}
-Free groups are one of the most basic examples of infinite finitely-generated groups.
-The automorphism groups of free groups are of particular interest since they are tied to many other areas of mathematics.
-The automorphism group $\aut(G)$ of a group $G$ can be separated into the inner automorphism group $\on{Inn}(G)$,
-the group of automorphisms that arise from conjugation, and the outer automorphism group $\out(G)$, the quotient of  $\aut(G)$ by $\on{Inn}(G)$.
 
-Most often the inner automorphism groups are well understood.  To understand the outer automorphism groups
-the standard approach has been to study it via its action on some topological space.
-For the outer automorphism group of the free group on $n$ generators $\out(F_{n})$ the space $\mathcal{X}_{n}$ known as "Outer space"
-has been introduced by Culler and Vogtmann in \cite{vogtmann86}. As the points of the Outer space correspond to finite graphs with fundamental group $F_{n}$,
-the structure of Outer space is connected to such diverse areas as the study of Lie algebras of derivations, degenerations of algebraic varieties,
-the computation of Feynman integrals, and the statistics of phylogenetic trees.
+\section{The rank of a graph}
+We start this section of by proving Theorem \ref{thm:fg_graph} which we state again below.
+Afterwards we expand on the concept of rank and prove several identities and relations.
 
-A central concept of the Outer space is its spine $K_{n}$ which is an equivariant deformation retract of $\mathcal{X}_{n}$.
-By being able to compute the rational homology of $K_{n} / \out(F_{n})$ one can also compute $\out(F_{n})$.
-By identifying the spine $K_{n}$ with a cube complex one arrives at the forested graph complex
-which has been introduced by Conant and Vogtmann in \cite{conant03}.
-
-The forested graph complex is also the main focus of this paper.
-We will begin by defining basic concepts of graphs, the Outer space and the forested graph complex as well as show the connection via the cube complex.
-
-Afterwards we will focus on Morita's classes which are an infinite sequence of cocycles representing potentially nontrivial cohomology classes $\mu_{k} \in H^{4k}(\out(F_{2k+2})$.
-
-
-
-\section{Basic Definitions}
-\subsection{Further results on graphs}
-
-\begin{theorem}\label{thm:fg_graph}
+\begin{theorem}
 	Let $G$ be a graph. Then its fundamental group $\pi_{1}(G)$ is isomorphic to a free group.
 \end{theorem}
-By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
+
 \begin{proof}
 	The following proof is from \cite[p. 43f]{hatcher00}
 	Let $G$ be a graph. W.l.o.g. $G$ is connected as else we consider each connected component separately. 
@@ -267,53 +322,10 @@ Finally we introduce the notion of degree of a graph also sometimes called exces
 	Thus $\deg(G) = 0$ if and only if every term is $0$ and thus if and only if every vertex has valency $3$.
 \end{proof}
 
-\subsection{The Outer space}
-We closely follow Vogtmann's definition from \cite[p. 2 ff.]{vogtmann16}
-\begin{definition}
-	By a \emph{metric graph} we mean a finite connected graph with positive real edge lengths, equipped with the path metric.
-	We fix a model rose $R_{n}$ (a graph with one vertex and $n$ petals), and identify the petals of $R_{n}$ with the generators
-	of the free group $F_{n}$. A point in $\mathcal{X}_{n}$ is then a metric graph $G$ together with a homotopy
-	equivalence $g: R_{n} \to  G$ called a \emph{marking}; the marking serves to identify the fundamental group of $G$ with $F_{n}$.
-	Marked graphs $(g,G)$ and $(g',G')$ are considered the same if there is an isometry  $f: G \to G'$ with $f \circ g$ homotopic to $g'$.
-
-	To get a finite dimensional space we assume $G$ has no uni- and bivalent vertices (see Theorem \ref{thm:finGenCn}).
-	Moreover we normalize our objects i.e. we assume the sum of edge lengths to be $1$ and assume that $G$ is $2$-connected.
-\end{definition}
-To make  $\mathcal{X}_{n}$ a space we need to define a topology. We proceed as follows: 
-For every marked graph $(g,G)$ we define the open simplex $\sigma(g,G)$ as the set obtained by varying the edge lengths of $G$,
-keeping their sum equal to $1$.
-The simplex  $\sigma(g',G')$ is then a \emph{face} of $\sigma(g,G)$ if $(g',G')$ can be obtained from $(g,G)$ by collapsing some edges to points.
-
-Finally $\mathcal{X}_{n}$ is the quotient space obtained from the disjoint union of the open simplices $\sigma(g,G)$ by face identification.
-
-However not all faces of these simplices are in $\mathcal{X}_{n}$.
-To rectify this we replace each open simplex $\sigma(g,G)$ by a closed simplex $\overline{\sigma}(g,G)$ and take
-the quotient as before. This new space, denoted by $\mathcal{X}^{*}_{n}$, is a simplical complex and called the \emph{simplical closure} of Outer space.
-The points in $\mathcal{X}^{*}_{n}$ which are not in $\mathcal{X}_{n}$ are said to be at infinity.
-
- Now the group $\out(F_{n})$ acts on $\mathcal{X}_{n}$ by changing the marking in particular
- any $\varphi \in \out(F_{n})$ can be realized by a homotopy equivalence $f: R_{n} \to R_{n}$
- by mapping petals to each other according to their identification with generators of $F_{n}$.
- The group action by $\varphi$ on $(g,G)$ is then defined by
- \[
-	 (g,G) \varphi = (g \circ f, G)
- .\] 
-
- Finally $\mathcal{X}_{n}$ contains an equivariant deformation retract $K_{n}$, the spine of Outer space.
- It is a subcomplex of the barycentric subdivision of the simplical closure $\mathcal{X}_{n}^{*}$, consisting of simplices spanned by vertices which are not at infinity.
-
- In other language, $K_{n}$ is the geometric realisation of the partially ordered set of open simplices $\sigma(g,G)$ in $\mathcal{X}_{n}$, where 
- the partial order is given by the face relation.
-
- We have the following vital result providing the relationship between $\mathcal{X}_{n}$ and $\out(F_{n})$. This was proved by Culler and Vogtmann in \cite{vogtmann86}.
- \begin{theorem}
-	 $\mathcal{X}_{n}$ is contractible and the action of $\out(F_{n})$ is proper.
-	 The spine $K_{n}$ is an equivariant deformation retract of dimension $2 n - 3$ with compact quotient
- \end{theorem}
-
-\subsection{Forested graph Complex}
-The forested graph complex has first been introduced by Conant and Vogtmann in \cite{conant03}.
-We however follow the simplified construction and definition of the forested graph complex given by Bartholdi in \cite{bartholdi16}.
+\section{The forested graph complex}
+As mentioned before the forested graph complex has first been introduced by Conant and Vogtmann in \cite{conant03}.
+Here however we will introduce the simplified construction and definition of the forested graph complex given by Conant and Vogtmann in \cite{conant08} 
+which the author first found in \cite{bartholdi16}.
 Very useful in the general understanding of  what a graph complex is and how the boundary map acts was Bar-Natan's and McKay's draft \cite{natan01}.
 Inspired by this similar examples for the forested graph complex are presented.
 
@@ -545,6 +557,8 @@ Thus the spaces $(C^{n}_{\bullet})$ with the differential $\partial_{\bullet}$ f
 	Thus we can conclude that $\partial_{\bullet} G = 4 H_2 - 4 G_3$. Moreover we have that $H_2 - G_3 \in \im \partial_{\bullet}$ and 
 	as $\partial_{\bullet}^2=0$ also $H_2 - G_3 \in \ker \partial_{\bullet}$
 \end{eg}
+
+This chain complex can also be thought of as a cubical chain complex 
 
 \subsection{Cubical Chain Complex}
 The above constructed complex $C_{\bullet}$ can also be viewed as a cubical chain complex.
