@@ -6,6 +6,8 @@
 \input{./tikzit/test.tikzstyles}
 \addbibresource{./references.bib}
 \usepackage[stable]{footmisc}
+\usepackage{caption}
+\usepackage{subcaption}
 
 \begin{document}	
 \include{titlepage.tex}
@@ -77,12 +79,14 @@ To understand this space however we first have to introduce basic concepts of gr
 \end{theorem}
 By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as the rank of its fundamental group.
 
-A proof of this theorem will be given later in \ldots
+A proof of this theorem will be given later at the beginning of section \ref{sec:RankGraph}.
 
-Finally a \emph{metric graph} is a finite connected graph with 
-\todo{graph metric, path metric}
+Finally a \emph{metric graph} is a finite connected graph where each edge is assigned a positive real value 
+value, its length, and on these lengths we define the path metric i.e.
+the distance between two points is the length of the shortest path between them.
+Here the length of the path is the sum of the lengths of the edges that are (partially) traversed.
 
-\subsection{Outer space}
+\subsection{Outer space\footnote{The figures in this section are taken from \cite{vogtmann02}}}
 We can now come back to the study of $\out(F_{n})$ and the aforementioned Outer space. 
 For this we follow Vogtmann's survey in \cite{vogtmann02}.
 
@@ -111,6 +115,11 @@ Now the labels determine a map $f: G \to R_{n}$ given by sending $T$ to the vert
 each edge in $G \setminus T$ to the corresponding loop in $R_{n}$ given by the labelling.
 The labelling is chose in such a way that $f$ is a homotopy inverse to $g$.
 An example is given in the figure below.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.2\textwidth]{./Images/pointOfOuterSpace.pdf}
+	\caption{A point of Outer Space}
+\end{figure}
 
 To define a topology on $\mathcal{X}_{n}$ we look at the set $\mathcal{C}$ of conjugacy classes of $F_{n}$, the cyclic reduced words.
 Now we can define a map from Outer space $\mathcal{X}_{n}$ to the infinite projective space $\mathbb{RP}^{\mathcal{C}}$.
@@ -125,6 +134,19 @@ containing all graphs that can be reached by varying the non-zero lengths of edg
 the total edge length remains one. The faces of the simplex are then the marked graphs where one edge of $(g,G)$
 has been fully contracted. Of course a contracted edge can be extended again in multiple ways thus connecting
 the different simplices. An example is given in the figure below.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=\textwidth]{./Images/outerSpaceD2.pdf}
+		\caption{Outer space $\mathcal{X}_{2}$}
+	\end{subfigure}
+	\hspace{0.1\textwidth}
+	\begin{subfigure}{0.3\textwidth}
+		\includegraphics[width=\textwidth]{./Images/outerSpaceFaces.pdf}
+		\caption{Simplices in $\mathcal{X}_{2}$}
+	\end{subfigure}
+\end{figure}
 
 For a marked graph with $k+1$ edges the corresponding simplex is $k$ dimensional.
 Moreover the identification works the other way round to i.e. every open simplex in $X_{n}$ 
@@ -164,7 +186,13 @@ This collapsing is also called a forest collapse.
 
 Through this we can determine the dimension of $K_{n}$ as collapsing an edge decreases the number of vertices by $1$.
 Thus with a similar argument as in the proof of Theorem \label{thm:finGenCn} we see that $\dim(K) = 2n -3$.
-An example of a part of the spine of $\mathcal{X}_{2}$ is given below.
+An example of a part of the spine of $\mathcal{X}_{2}$ is given below\footnote{This figure is taken from \cite{vogtmann02}}. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{./Images/spineOfOuterSpace.pdf}
+	\caption{A section of the spine of Outer space $\mathcal{X}_{2}$}
+\end{figure}
 
 From our construction above $K_{n}$ has the structure of a simplical complex where a $k$-simplex
 is a chain of $k$ forest collapses. Coming back to $\out(F_{n})$ acting on spaces; its action on $\mathcal{X}_{n}$ extends to a simplical action on $K_{n}$.
@@ -195,15 +223,46 @@ introduced by Conant and Vogtmann in \cite{conant03}. In this introductory secti
 we will describe the original construction. In the later chapter we are going to
 introduce a more practical hands-on but equivalent definition from \cite{conant08}.
 
+\begin{definition}
+	A forested graph is a pair $(G,\Phi)$ of a finite conntected trivalent graph $G$ and an oriented forest $\Phi$ containing all vertices of $G$.
+	The orientation on the forest is an ordering of its edges where interchanging any two edges reverses the orientation.
+\end{definition}
+
+We now denote by $\widehat{f\mathcal{G}}_{k}$ the vector space spanned by forested graphs with forest size $k$ modulo the relations
+$(G,\Phi) = -(G,-\Phi)$.
+
+Now if we consider a forested graph $(G,\Phi)$ and we collapse an edge $e$ in $\Phi$ then the graph obtained $(G_{e},\Phi_{e})$ 
+has exactly one $4$ valent vertex. As the image below shows there are exactly two other graphs
+whose edge collapse leads to the graph $(G_{e},\Phi_{e})$.
+\ctikzfig{./tikzit/IHXRelator}
+If we denote those two by $(G',\Phi')$ and  $(G'',\Phi'')$ then we call the vector
+\[
+	(G,\Phi) + (G',\Phi') + (G'',\Phi'')
+.\] 
+the basic IHX relator associated to $(G,\Phi,e)$. 
+We denote be $IHX_{k}$ the subspace of $\widehat{f\mathcal{G}}_{k}$ spanned by all basic IHX relators
+and define $f\mathcal{G}_{k}$ as the quotient space $\widehat{f\mathcal{G}}_{k} / IHX_{k}$.
+
+Finally we can define a boundary map  $\partial: f\mathcal{G}_{k} \to f\mathcal{G}_{k-1}$ induced by the map on $\widehat{f \mathcal{G}}_{k}$ given by
+\[
+	\partial_{E}(G,\Phi) = \sum (G,\Phi \cup e)
+\] 
+where we sum over all edges in $G \setminus \Phi$ such that $\Phi \cup e$ is still a forest and 
+$e$ gets the label $k+1$ in the orientation.
+
+One can check that $\partial_{E}$ is really a boundary map i.e. that $\partial_{E}^2 = 0$ and thus
+we get a chain complex $f\mathcal{G}_{\bullet}$ with boundary map $\partial_{E}$.
+The rational homology of this complex now computes the rational homology of $\out(F_{n})$ as
+explained at the end of the previous section.
 
 
-\subsection{Known homology of $\out(F_{n})$}
-In this final section of the introduction we try to summarize the known homology of $\out(F_{n})$.
+\subsection{Known homology of \boldmath$\out(F_{n})$}
+To conclude this introduction we try to summarize the known homology of $\out(F_{n})$.
 
 \newpage
 
 
-\section{The rank of a graph}
+\section{The rank of a graph}\label{sec:RankGraph}
 We start this section of by proving Theorem \ref{thm:fg_graph} which we state again below.
 Afterwards we expand on the concept of rank and prove several identities and relations.
 
@@ -558,27 +617,12 @@ Thus the spaces $(C^{n}_{\bullet})$ with the differential $\partial_{\bullet}$ f
 	as $\partial_{\bullet}^2=0$ also $H_2 - G_3 \in \ker \partial_{\bullet}$
 \end{eg}
 
-This chain complex can also be thought of as a cubical chain complex 
-
-\subsection{Cubical Chain Complex}
-The above constructed complex $C_{\bullet}$ can also be viewed as a cubical chain complex.
-Here we think of a graph $(G,\Phi) = (G, \{e_1,\ldots,e_{k}\})  \in C_{k}$ as the $k$-dimensional $[0,1]$-cube embedded in $R^{k}$.
-The Graph $G_{\Phi}$ where all edges in  $\Phi$ have been collapsed sits at the origin and the graph $G$ where all edges have been removed from  $\Phi$ but not collapsed
-sits diagonally opposite at  $(1,\ldots,1)$.
-We can assign a graph to every face in the following way:
-Consider a face $F$ of dimension $n < k$, let $bF$ be its barycenter. Then $bF \in \{0,1 / 2, 1\}^{k}$ and denote by $bF_{i}$ its $i$-th coordinate.
-Moreover let
-\[
-	C := \{e_{i} \in \Phi \mid bF_{i} = 0\} \qq{and} R := \{e_{i} \in \Phi \mid bF_{i} = 1\}  
-.\] 
-Then the graph associated to $F$ is given by $(G / C, \Phi \setminus (C \cup D)$.
-Thus an edge gets contracted if $bF_{i} = 0$ and an edge gets removed from $\Phi$ but not contracted if $bF_{i} = 1$.
-Now if a face is of dimension $n$ then $n$ coordinates of $bF$ equal  $1 / 2$ and thus the resulting graph has a forest of size $n$ and is hence in $C_{n}$.
-
-The above description gives us a bijection between the reduced graphs of $G$ and the half integral points.
-Denote the reduced graph of $G$ associated to $bF$ by $G_{bF}$. Then we can define the boundary operator via this bijection as follows:
-
-\todo[inline]{Formulate this}
+As we did with the spine of Outer space in the introduction this chain complex
+can also be viewed as a cubical complex: The $k$-cubes are given by graphs $(G,\Phi,\sigma)$
+with forest size $k$ and the faces are $k-1$-cubes obtained from collapsing an edge in $\Phi$ 
+or removing an edge in $\Phi$ from the forest. Collapsing the edge $e in \Phi$ is
+on the opposite side of the $k$-cube of removing $e$ from $\Phi$. 
+An orientation on the cube is induced by the signs from the boundary maps $\partial_{C}$ and $\partial_{R}$.
 
 To visualize this construction we consider the following example:
 \begin{eg}
@@ -587,7 +631,7 @@ To visualize this construction we consider the following example:
 	Then its $2$-dimensional cube is given as below:
 	\ctikzfig{./tikzit/cubicalCCEx}
 \end{eg}
-
+\newpage
 \section{Morita-Cycles}
 \todo[inline]{Formulate this whole section better and in an easier way}
 The goal of this section is to show that there exist a cycle in every $C_{n}$.
