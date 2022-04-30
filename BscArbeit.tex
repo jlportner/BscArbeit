@@ -11,19 +11,19 @@
 
 \begin{document}	
 \include{titlepage.tex}
-\tableofcontents
+%\tableofcontents
 \newpage
 \section{Introduction}
 As groups are a fundamental concept of mathematics understanding them has been a central aspect ever since their discovery.
-Free groups are then the class of groups where no relation exists between their generators: 
+Free groups are then the class of groups where no relation exists between the generators: 
 The elements are words of generators and their inverses. The group relation is given by concatenating words
 and reducing them i.e. if two adjacent elements are inverse to each other they will be omitted.
 The free group on $n$ generators will be denoted by $F_{n}$.
-The importance of free groups now arises from the fact that every group is isomorphic to a quotient group of a free group
-an in particular any finitely generated group is isomorphic to a quotient group of $F_{n}$ for some $n$.
+The importance of free groups arises from the fact that every group is isomorphic to a quotient group of a free group
+and in particular any finitely generated group is isomorphic to a quotient group of $F_{n}$ for some $n$.
 
 Another way to approach a group $G$ is to understand its automorphism group $\aut(G)$ as it describes $G$'s symmetries.
-Now $\aut(G)$ can be separated into the inner automorphism group $\on{Inn}(G)$,
+$\aut(G)$ can be separated into the inner automorphism group $\on{Inn}(G)$,
 the group of automorphisms that arise from conjugation, and the outer automorphism group $\out(G)$, the quotient of  $\aut(G)$ by $\on{Inn}(G)$.
 
 Combining those two aspects it is only natural that mathematicians study the automorphism group of $F_{n}$ since the beginning of the subject.
@@ -39,7 +39,7 @@ For higher groups only the existence of a surjection $\out(F_{n}) \to \on{GL}_{n
 Historically $\on{GL}_{n}(\Z)$ has been studied by by its action on the symmetric space $\on{SL}_{n}(\R) / \on{SO}_{n}(\R)$.
 Due to the relation between $\out(F_{n})$ and $\on{GL}_{n}(\Z)$ early attempts of the study of the outer automorphism group
 examined its action on $\on{SL}_{n}(\R) / \on{SO}_{n}(\R)$ induced by the above surjection.
-However this action is not proper meaning that inverse of compact sets under the action are not necessarily compact.
+However this action is not proper meaning that the inverse of compact sets under the group action are not necessarily compact.
 Hence it behaves quite badly and a different approach was needed.
 
 Therefore Culler and Vogtmann introduced a new space $\mathcal{X}_{n}$ known as "Outer space" in \cite{vogtmann86}.
@@ -61,7 +61,7 @@ To understand this space however we first have to introduce basic concepts of gr
 
 \begin{remark}
 	Note that sometimes these types of graphs are called multigraphs, as they are allowed to have multiple edges between vertices as well as loops.
-	The word graph there normally refers to simple graphs which do not allow multi-edges and loops.
+	The word graph then normally refers to simple graphs which do not allow multi-edges and loops.
 
 	In the context of algebraic topology however multigraphs are needed and thus the word graph here denotes multigraphs.
 \end{remark}
@@ -74,6 +74,7 @@ To understand this space however we first have to introduce basic concepts of gr
 	connected graph containing no cycles. A forest is a collection of disjoint trees.
 \end{definition}
 
+The following result gives the fundamental connection between graphs and free groups:
 \begin{theorem}\label{thm:fg_graph}
 	Let $G$ be a graph. Then its fundamental group $\pi_{1}(G)$ is isomorphic to a free group.
 \end{theorem}
@@ -81,8 +82,8 @@ By the theorem it makes sense to define the \emph{rank} of a graph $\rank(G)$ as
 
 A proof of this theorem will be given later at the beginning of section \ref{sec:RankGraph}.
 
-Finally a \emph{metric graph} is a finite connected graph where each edge is assigned a positive real value 
-value, its length, and on these lengths we define the path metric i.e.
+Finally a \emph{metric graph} is a finite connected graph where each edge is assigned a positive real value, its length. 
+Moreover on these lengths we define the path metric i.e.
 the distance between two points is the length of the shortest path between them.
 Here the length of the path is the sum of the lengths of the edges that are (partially) traversed.
 
@@ -98,20 +99,20 @@ An automorphism $\phi$ on $F_{n}$ is now a homotopy equivalence sending the loop
 to the one identified with $\phi(x_{i})$.
 
 Outer space can now be defined as the set of marked metric graphs $(g,G)$ under an equivalence relation.
-The graphs $(g,G)$ have to satisfy
+The graphs $(g,G)$ have to satisfy the following:
 \begin{itemize}
 	\item $G$ is a finite graph with vertex valency at least $3$,
 	\item $g: R_{n} \to G$ is a homotopy equivalence called the marking of $G$, and
 	\item each edge has a positive length such that the sum of all
 		edge lengths is one. This turns $G$ into a metric space via the path metric.
 \end{itemize}
-The equivalence relation is given by $(g,G) \equiv (g',G')$ if and only if 
+The equivalence relation is given by $(g,G) \sim (g',G')$ if and only if 
 there exists an isometry $h: G \to G'$ such that $g \circ h$ is homotopic to $g'$.
 
 Intuitively each point $(g,G)$ can be represented by drawing the graph $G$,
 finding a maximal forest $T$ on $G$ and labelling all edges not in $T$ with an orientation
 and an element of $F_{n}$.
-Now the labels determine a map $f: G \to R_{n}$ given by sending $T$ to the vertex of $R_{n}$ and sending
+The labels determine a map $f: G \to R_{n}$ given by sending $T$ to the vertex of $R_{n}$ and sending
 each edge in $G \setminus T$ to the corresponding loop in $R_{n}$ given by the labelling.
 The labelling is chose in such a way that $f$ is a homotopy inverse to $g$.
 An example is given in the figure below.
@@ -123,17 +124,18 @@ An example is given in the figure below.
 
 To define a topology on $\mathcal{X}_{n}$ we look at the set $\mathcal{C}$ of conjugacy classes of $F_{n}$, the cyclic reduced words.
 Now we can define a map from Outer space $\mathcal{X}_{n}$ to the infinite projective space $\mathbb{RP}^{\mathcal{C}}$.
-This map assigns to every metric marked graph $(g,G)$
-For every metric marked graph $(g,G) \in \mathcal{X}_{n}$ we assign the cyclically reduced word $w$
-the length of the unique cyclically reduced path loop in $G$ homotopic to $g(w)$.
-The topology is then the subspace topology obtained from RP.
+For a fixed marked graph $(g,G)$ the map assigns to each cyclically reduced word $w$ the length
+of the unique cyclically reduced path loop in $G$ homotopic to $g(w)$.
+As this map is injective, we can view $\mathcal{X}_{n}$ as s subspace of $\mathbb{RP}^{\mathcal{C}}$ and thus
+give $\mathcal{X}_{n}$ the subspace topology.
 
 This definition might seem quite ad hoc, however under it $X_{n}$ decomposes nicely into
 a disjoint union of open simplices: Every marked graph $(g,G)$ belongs to the open simplex
 containing all graphs that can be reached by varying the non-zero lengths of edges such that
-the total edge length remains one. The faces of the simplex are then the marked graphs where one edge of $(g,G)$
+the total edge length remains $1$. The faces of the simplex are then the marked graphs where one edge of $(g,G)$
 has been fully contracted. Of course a contracted edge can be extended again in multiple ways thus connecting
-the different simplices. An example is given in the figure below.
+the different simplices. An example is given in the figure below on the right.
+On the left we see a depiction of $\mathcal{X}_{2}$.
 
 \begin{figure}[h]
 	\centering
@@ -149,43 +151,44 @@ the different simplices. An example is given in the figure below.
 \end{figure}
 
 For a marked graph with $k+1$ edges the corresponding simplex is $k$ dimensional.
-Moreover the identification works the other way round to i.e. every open simplex in $X_{n}$ 
+Moreover the identification works the other way round i.e. every open simplex in $X_{n}$ 
 is a face of a maximal simplex which corresponds to a trivalent marked graph.
-Taking the argument from the proof of Theorem \label{thm:finGenCn} we see that the dimension of $\mathcal{X}_{n}$ is equal to $3n -4$.
+Taking the argument from the proof of Theorem \ref{thm:finGenCn} we see that the dimension of $\mathcal{X}_{n}$ is equal to $3n -4$.
 
 Now with the Outer space defined we can look at the group action of $\out(F_{n})$ on $\mathcal{X}_{n}$.
-Here $\out(F)_{n}$ acts on $X_{n}$ on the right as follows:
-Every $\phi \in \out(F)_{n}$ induces a map $f: R_{n} \to R_{n}$ by mapping the edge labelled
+Here $\out(F_{n})$ acts on $X_{n}$ on the right as follows:
+Every $\phi \in \out(F_{n})$ induces a map $f: R_{n} \to R_{n}$ by mapping the edge labelled
 by $x$ to the edge labelled by $\phi(x)$.
 Then the right group action is defined by $(g,G) \phi = (g \circ f, G)$.
 
-An inconvenience that arises is that the quotient of $\mathcal{X}_{n}$ by $\out(F)_{n}$ is not compact.
+An inconvenience that arises is that the quotient of $\mathcal{X}_{n}$ by $\out(F_{n})$ is not compact.
 Resolving this leads us to the next construction.
 
 \subsection{Spine of Outer Space}
 The beginning of this section follows Culler and Vogtmanns original definition from \cite{vogtmann86}.
+In the latter half we \cite{vogtmann16}.
 
 In a first step we define a more convenient somewhat simpler version of $\mathcal{X}_{n}$ known as reduced Outer space and denote it by $Y_{n}$.
 The points in the subspace $Y_{n}$ are the marked graphs $(g,G)$ not containing any separating edges, i.e.
 no edges $e$ such tat $G \setminus e$ is disconnected.
 An equivariant deformation retraction from $\mathcal{X}_{n}$ to $Y_{n}$ is given by shrinking the lengths of
-the separating edges to zero while uniformly extending the lengths of the other edges in order to preserve the total edge length of one.
+the separating edges to zero while uniformly extending the lengths of the other edges in order to preserve the total edge length of $1$.
 
 We can now define the spine of Outer space $K_{n}$ as follows:
-$K_{n}$ is the maximal full subcomplex of the barycentric subdivision of $Y$ which is disjoint from the boundaries of the open simplices in $Y$.
+$K_{n}$ is the maximal full subcomplex of the barycentric subdivision of $Y_{n}$ which is disjoint from the boundaries of the open simplices in $Y_{n}$.
 The vertices of $K_{n}$ are the barycenters of simplices in $Y_{n}$ i.e. the subspace of $Y_{n}$ containing marked graphs 
 with equal edges length. The deformation retraction from $Y_{n}$ to $K_{n}$ is given by
 collapsing every simplex $\tau$ of the barycentric subdivision of $Y_{n}$ to the face of $\tau$ contained in $K_{n}$.
 This can be done equivariantly.
 Thus $K_{n}$ can be thought of as ignoring the metric structure of $Y_{n}$ and only focusing on its combinatorial structure.
 
-Going the other way if we have to vertices $(g,G)$ and $(g',G')$ in $K_{n}$. Then the open simplex in $X_{n}$ 
+Going the other way if we have to vertices $(g,G)$ and $(g',G')$ in $K_{n}$. Then the open simplex in $\mathcal{X}_{n}$ 
 determined by $(g,G)$ is a face of  the one determined by $(g',G')$ exactly when $G$ is obtained from $G'$ 
 by collapsing a forest of edges in $G'$ and  $g$ is homotopic to the composition of $g'$ with the collapsing map.
 This collapsing is also called a forest collapse.
 
-Through this we can determine the dimension of $K_{n}$ as collapsing an edge decreases the number of vertices by $1$.
-Thus with a similar argument as in the proof of Theorem \label{thm:finGenCn} we see that $\dim(K) = 2n -3$.
+Through this as collapsing an edge decreases the number of vertices by $1$ we can determine the dimension of $K_{n}$.
+Thus with a similar argument as in the proof of Theorem \ref{thm:finGenCn} we see that $\dim(K) = 2n -3$.
 An example of a part of the spine of $\mathcal{X}_{2}$ is given below\footnote{This figure is taken from \cite{vogtmann02}}. 
 
 \begin{figure}[h]
@@ -199,7 +202,7 @@ is a chain of $k$ forest collapses. Coming back to $\out(F_{n})$ acting on space
 Culler and Vogtmann proved in \cite{vogtmann86} that this action has finite stabilizers.
 Thus the rational homology of $\out(F_{n})$ can be computed as the quotient of $K_{n}$ by $\out(F_{n})$
 \[
-	H_{\bullet}(\out(F_{n},\Q) \cong H_{\bullet}(K_{n}/ \out(F_{n}),\Q)
+	H_{\bullet}(\out(F_{n}),\Q) \cong H_{\bullet}(K_{n}/ \out(F_{n}),\Q)
 .\] 
 
 In order to calculate this homology we turn $K_{n}$ into a cube complex i.e. a CW-complex where the cells are homeomorphic
@@ -207,10 +210,12 @@ to Euclidean cubes and the attaching maps identify faces with lower dimensional 
 For a forest $\Phi$ in $G$ with $k$ edges we can now define the $k$-cube:
 From $\Phi$ we get a chain of $k$-forest collapses by collapsing each edge in $\Phi$ at a time.
 This yields a $k$-simplex. Collapsing the edges in another order yields another $k$-simplex.
-All these different $k$-simplices can now be fit together to triangulate an $k$-dimensional cube.
+All these different $k$-simplices can now be fit together to triangulate a $k$-dimensional cube.
 Thus every $k$-cube is given by a graph $G$ and a forest $\Phi$ of size $k$.
 The faces of dimension $k-1$ are the graphs obtained from $G$ where one edge in $\Phi$ has been collapsed.
-An example is given in the figure below.
+An example is given in the figure below where the red edges represent the edges that are being contracted along that face.
+
+\ctikzfig{./tikzit/spineCube}
 
 Viewing $K_{n}$ as a cube complex with one cube for every triple $(g,G,\Phi)$ we can define an orientation up to even permutation
 via ordering the edges of $\Phi$. Then the rational homology of $K_{n} / \out(F_{n})$ can be
@@ -231,7 +236,7 @@ introduce a more practical hands-on but equivalent definition from \cite{conant0
 We now denote by $\widehat{f\mathcal{G}}_{k}$ the vector space spanned by forested graphs with forest size $k$ modulo the relations
 $(G,\Phi) = -(G,-\Phi)$.
 
-Now if we consider a forested graph $(G,\Phi)$ and we collapse an edge $e$ in $\Phi$ then the graph obtained $(G_{e},\Phi_{e})$ 
+If we consider a forested graph $(G,\Phi)$ and we collapse an edge $e$ in $\Phi$ then the graph obtained $(G_{e},\Phi_{e})$ 
 has exactly one $4$ valent vertex. As the image below shows there are exactly two other graphs
 whose edge collapse leads to the graph $(G_{e},\Phi_{e})$.
 \ctikzfig{./tikzit/IHXRelator}
@@ -256,8 +261,49 @@ The rational homology of this complex now computes the rational homology of $\ou
 explained at the end of the previous section.
 
 
-\subsection{Known homology of \boldmath$\out(F_{n})$}
+\subsection{Group homology and the known homology of Outer space}
 To conclude this introduction we try to summarize the known homology of $\out(F_{n})$.
+We will only consider the rational homology here and thus omit the field $\Q$.
+
+For this we need to first introduce two concepts:
+If a group $G$ contains a torsion free subgroup of finite index, then the virtual cohomological dimension $\on{vcd}(G)$
+is the cohomological dimension of this subgroup. It is independent of the choice of subgroup.
+
+Moreover a series of groups $G_1 \subseteq G_2 \subseteq \ldots$ is called homological stable if for every $k$ 
+there exists a $N$ such that 
+\[
+	H_{k}(G_{n}) \cong H_{k}(G_{n+1}) \qq{ for all } n \geq N
+\]
+that is for $n$ large enough the homology is independent of  $n$.
+
+As Culler and Vogtmann showed in \cite{vogtmann86} that $H_{k}(\out(F_{n}))$ is finitely generated and vanishes for $k$ greater
+than the vcd which is $2n -3$ for $\out(F_{n})$. This gives us an upper bound on Homology.
+Moreover they showed that the spine $K_{n}$ is path connected from which we conclude that $H_0(\out(F_{n})) = \Q$.
+
+On the other side homological stability was proven for $\out(F_{n})$ for $n \geq 5 (k+1) / 4$ in \cite{hatcher98,hatcher04}.
+Moreover Galatius proved in \cite{galatius11} that these groups are in fact zero, giving us a lower bound.
+
+Only very few of these homology groups are explicitly known.
+For the groups $H_{4}(\out(F_{4}))$, $H_{8}(\out(F_{6}))$ and $H_{12}(\out(F_{8}))$ it is known 
+that the Morita Classes do not vanish and in fact as they have dimension $1$ the Morita Classes even generate these groups.
+We will expand on this in the last chapter of this work.
+Ohashi showed in \cite{ohashi08} that all other groups for $n \leq 6$ are trivial. 
+The only other two known groups were determined by Bartholdi in \cite{bartholdi16} and are
+$H_{8}(\out(F_{7}))$ and $H_{11}(\out(F_{7}))$. He also showed that all other homologies for $n = 7$ are trivial.
+The graphic below inspired by Fig. 1 in \cite{conant16} summarizes these results.
+
+\begin{figure}[h]
+	\centering
+	\captionsetup{width=0.8\textwidth}
+	\includegraphics[width=0.8\textwidth]{./Images/OutFnHomology.png}
+	\caption{Homology Classes of $\out(F_{n})$. The squares represent the  Morita classes and are filled in if they are known to be non-trivial.
+		The hexagons are Bartholdis non-trivial classes.}
+\end{figure}
+
+Euler Characteristic computations for $n \leq 11$ by Morita, Sakasai and Suzuki in \cite{morita15moduli,morita15euler} are shown below.
+If this negative trend continues it would mean that there are lots of odd-dimensional
+homology classes of $\out(F_{n})$ the only one of which known is Bartholdi's $H_{11}(\out(F_{7}))$.
+Thus the homology of $\out(F_{n})$ still remains mostly unknown.
 
 \newpage
 
@@ -637,56 +683,35 @@ To visualize this construction we consider the following example:
 The goal of this section is to show that there exist a cycle in every $C_{n}$.
 For this we define the Morita-Cycle graphs and show that there exists a chain of those graphs that vanishes under the boundary $\partial$.
 
- \begin{definition}
-	 A general \emph{Morita-Cycle} $M_{n}$, for $n \geq 3$ odd, is a forested graph $(G,\Phi,\tau)$ defined as follows:
-	 $G$ has $2\cdot n$ vertices which form two separate cycles each of order $n$.
-	 More over each vertex of one cycle is connected via an edge to exactly one vertex of the other cycle.
-	 The forest $\Phi$ are $n-1$ edges in each of the two cycles.
-	 The orientation $\tau$ is some numbering of the edges in $\Phi$. 
-
-	 We call one of the cycles the "left" and the other one the "right" cycle.
-	 Moreover the missing edge in the cycle from the left/right tree in $\Phi$ is called missing left/right edge.
-\end{definition}
-As the cycles have $n$ edges each. The forest $\Phi$ has exactly two trees of size $n-1$ of the form of a line.
-For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism (mirroring between the two cycles) and thus vanishes.
-
 \begin{definition}
-	We say a Morita-Cycle $M_{n}$ is (drawn) in standard form if the edges in the forest in the left cycle are numbered in ascending order
-	starting with $1$ on one edge adjacent to the missing left edge and ending with $n-1$ on the other edge adjacent to the missing left.
-	For the right cycle the edges in $\Phi$ are numbered analogous just from $n$ to $2n-1$. 
-	Moreover when we draw the graph we always draw the missing left/right to the outside of the cycles.
+	A Morita-Cycle $M_{n}(\sigma)$ for $n \in \N_{\geq 3} \sigma \in \mathbb{S}_{n}$ is a forested graph $(G,\Phi,\tau)$ defined as follows:
+	$G$ consists of two polygons each with $n$ vertices, each of which is connected to precisely one vertex on the other polygon.
+	The vertices are labelled from $1$ to $n$ on one polygon and $n+1$ to $2n$ on the other then the connecting edges between them are given by $(i,\sigma(i)+n)$ i.e.
+	sigma describes how the edges connecting the two polygons are permuted.
 
-	To make this definition more intuitive it is best to view the illustration below of a Morita cycle $M_{5}$ in standard form.
+	The forest $\Phi$ consists of the edges $(i,i+1)$ for $i \in \{1,\ldots,n-1, n+1,\ldots,2n-1\}$ i.e. the
+	forest consists of two linear trees of size $n-1$ each of which is obtained by removing one edge from the corresponding polygon.
+	Finally the ordering $\tau$ is given by
+	\[
+		\tau((i,i+1)) = \begin{cases}
+			i & \text{ for } 1 \leq i \leq n-1\\ 
+			i-1 & \text{ for } n+1 \leq i \leq 2n-1
+		\end{cases}
+	.\] 
 \end{definition}
+Notice that for every even $n$ $M_{n}(\sigma)$ has an odd automorphism which is given by exchanging the two polygons and applying the permutation $(1\ n) \ldots (n-1\ 2n -1)$ and
+thus those Morita-Cycles vanish.
+Moreover as $M_{n}(\sigma)$ has $2n$ vertices and $3n$ edges by Proposition \ref{prop:rank} it has rank $n+1$.
+Furthermore $M_{n}(\sigma)$ is clearly an admissible graph and thus $M_{n}(\sigma) \in C_{n}$.
 
-\begin{proposition}
-	Every Morita-Cycle $M_{n}$ in standard form is fully determined by $n$ and a permutation $\sigma \in S_{n}$. Thus we denote 
-	such a Graph by $M_{n}(\sigma)$.
-	Moreover every general Morita-Cycle $M_{n}$ can be written in standard form.
-\end{proposition}
-
-\begin{proof}
-	We show the second part of the statement first.
-	By renumbering the edges in the forest we can always get to the desired ordering. Notice that this might introduce a factor of $-1$
-	if the renumbering is an odd permutation.
-	Now by rotating the left/right cycle in our drawing we can also get the missing left/right in its desired place.
-
-	Now to the first part of the proposition.
-	By the properties of the standard form the left and right cycle are fully fixed and equal for all Morita-Cycles of size $2 n$.
-	Thus the only difference are the edges between the two cycles.
-	For these we number the nodes in the left cycle from $1$ to $n$ from top to bottom
-	and on the right from $n$ to  $2 n$ also from top to bottom. Then each edge can be identified with a pair $(u,v)$.
-	We now define the permutation $\sigma: {1,\ldots,n} \to {1,n}$ via $\sigma(u) = v - n$.
-
-	On the other side if we have a permutation $\sigma \in S_{n}$. We can define the edges between the left and right cycle
-	by $(i,\sigma(i) +n)$ for $i \in {1,\ldots,n}$ and get a Morita-Cycle in standard form
-\end{proof}
+To give a better understanding of this definition we give the following example:
 
 \begin{eg}
-	Below is a Morita-Cycle of order $5$ in standard form defined by the permutation $(12)(345)$.
+	Below is a Morita-Cycle of order $5$ given by the permutation $(12)(345)$.
 	\ctikzfig{./tikzit/morita_cycle_5}
 \end{eg}
 
+The following result proves that there exists a cycle in every $C_{n}$ for $n \geq 4$.
 \begin{theorem}
 	For all $n \in \N_{\geq 3}$ odd it holds that 
 	\[
@@ -695,24 +720,24 @@ For every even $n$ it can easily be seen that $M_{n}$ has an odd automorphism (m
 \end{theorem}
 
 We prove this statement in two parts first for $\partial_{C}$ and then for $\partial_{R}$, from which the final result follows.
-Moreover when we talk about a Morita-Cycle we will always talk about it drawn in its standard form.
-\begin{proof}[Proof for $\partial_C$]
-	Let $(H,\Psi,\eta)$ be in the sum $\partial_{C}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
-	Then as it is an element of the boundary of some Morita-Cycle it has to
-	have precisely one vertex of degree 4, in either the left or right cycle and the same cycle has order $n-1$ and only $n-2$ edges in the tree.
-	W.l.o.g. we assume that the edge is missing in the left tree as else one can mirror along the horizontal
-	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
 
-	Now assume that the vertex of degree $4$ is the $k$-th one from the top. An example is shown in the figure below on the left for $k = 2$.
-	Then there exist exactly two Morita-Cycles in standard form in whose boundary $H$ lies. 
-	One is obtained by splitting the vertex $k$ into two vertices where each new vertex contains one edge from the forest and one connecting to the right cycle.
+
+\begin{proof}[Proof for $\partial_C$]
+	Let $(H,\Psi,\eta)$ be an element of the chain $\partial_{C}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
+	Then as it is an element of the boundary of some Morita-Cycle it has to
+	have precisely one vertex of degree $4$. W.l.o.g. we can assume that it is in the polygon containing the 
+	edge with the label $1$ as else we can apply the even permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
+
+	Let $k$ be the node label of the degree $4$ vertex an example is shown in the figure below on the left for $k = 2$. 
+	Then there exist exactly two Morita-Cycles in whose boundary $H$ lies and whose induced node labeling corresponds to the one of $H$.
+	One is obtained by splitting the vertex $k$ into two vertices labeled $k$ and $k+1$ where each new vertex contains one edge from the forest and one connecting to the other polygon.
 	Moreover the two new nodes get connected by an edge which is also added to the forest and given the number $k$ in the ordering.
 	All other edges with ordering number  $> k $ get increased by one. Lets denote this Morita-Cycle by $M_{n}(\sigma)$.
-	The other one is obtained in the same way however the two edges connecting to the right cycle are permuted i.e.
-	if the new node is numbered by $k+1$ then this Morita-Cycle equals $M_{n}((k\ k+1)\sigma)$.
+	The other one is obtained in the same way however the two edges connecting to the other polygon are permuted i.e.
+	this Morita-Cycle equals $M_{n}((k\ k+1)\sigma)$.
 	Examples for both are also shown in the figure below in the middle and right respectively.
 
-	Thus we see that the two permutations $\sigma$ and $(k\ k+1) \sigma$ have opposite parity and thus $M_{n}(\sigma)$ and $M_{n}((k\ k+1) \sigma)$ have
+	Finally we see that the two permutations $\sigma$ and $(k\ k+1) \sigma$ have opposite parity and thus $M_{n}(\sigma)$ and $M_{n}((k\ k+1) \sigma)$ have
 	opposite sign in the sum from the theorem. Thus the elements in their boundary corresponding to $H$ also have opposite sign and hence cancel.
 
 	As $H$ was an arbitrary element of the sum we get that every summand has coefficient $0$ and the sum vanishes.
@@ -720,24 +745,35 @@ Moreover when we talk about a Morita-Cycle we will always talk about it drawn in
 \end{proof}
 
 \begin{proof}[Proof for $\partial_{R}$]
-	Again let $(H,\Psi,\eta)$ be in the sum $\partial_{R}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
-	Let $\sigma$ be the edge assignment between the left and right cycle as described in the standard form.
-	Then $H$ is a Morita-Cycle in standard form missing one edge in either the left or right tree of $\Psi$.
-	W.l.o.g. we assume that the edge is missing in the left tree as else one can mirror along the horizontal
-	and apply the permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
-
-	Now assume the $k$-th edge from the top is missing from $\Psi$; an example is shown in the figure below on the left for $k = 2$.
-	Then there are exactly two Morita-Cycles in standard form which have $H$ in their boundary.
-	One where the $k$-th edge has been added to the forest with number $k$ in the ordering i.e. $M_{n}(\sigma)$.
-	And the other where the left most edge has been added, the numbering in the left cycle been changed such that $1$ is the first edge 
-	after the missing one, the left most edge has order $n-k$ and so on.
-	Notice that the second graph is not drawn in standard form. To bring it in standard form one has to "rotate" the left cycle
-	by $k$ nodes counter clockwise. Each of this rotation induces the permutation $(1 \ldots n)$ on the edges connecting the left and right cycle i.e.
-	the resulting Morita cycle is given by $M_{n}(\tau) := M_{n}(\sigma (1 \ldots n)^{k})$.
-	Examples for both are also shown in the figure below in the middle and right respectively.
+	Again let $(H,\Psi,\eta)$ be an element of the chain $\partial_{R}\left(\sum_{\sigma \in S_{n}} \sgn(\sigma) M_{n}(\sigma)\right)$.
+	Then $H$ is a Morita-Cycle whose forest $\Psi$ is missing one extra edge in one of its trees.
+	We denote by $\sigma$ the edge permutation of $H$ between its two polygons as given in the definition of Morita-Cycles.
+	W.l.o.g. we can assume that it is in the polygon containing the 
+	edge with the label $1$ as else we can apply the even permutation $(1 \ldots 2n-1)^{n}$ to the orientation.
 	
+	Let $\sigma$ be the edge permutation between the left and right cycle as described in the standard form.
+
+	Let $(j,j+1)$ denote the extra edge missing from  $\Phi$. An example is shown in the figure below on the left for $k = 2$.
+	Then there are exactly two Morita-Cycles in the sum which have $H$ in their boundary and whose induced node labelling corresponds to the one of $H$.
+
+	One where the edge $(j,j+1)$ has been added to the forest with number $j$ in the ordering i.e. $M_{n}(\sigma)$.
+	And the other where the edge $(1,n-1)$ has been added and the ordering is given by
+	\[
+		\tau((i,i+1)) = \begin{cases}
+			i-j & \text{ for } j+1 \leq i \leq n-1\\
+			n-j+i & \text{ for } 1 \leq i \leq j-1\\
+			i-1 & \text{ for } n+1 \leq i \leq 2n-1
+		\end{cases} \qq{and} \tau(1,n-1) = n-j
+	\] i.e. the numbering starts with $1$ at the edge $(j+1,j)$ and increases until it reaches $n-1$ on the edge  $(j-1,j)$. 
+	The ordering on the other polygon has not been altered.
+	
+	Notice that the second graph is not part of the sum as the node labelling and the forest ordering do not correspond anymore. 
+	To resolve this we have to change the node labelling which induces the permutation $(1 \ldots n)^{k}$ on $\sigma$.
+	Thus the element in the sum corresponding to this graph is given by  $M_{n}(\tau) := M_{n}(\sigma (1 \ldots n)^{k})$.
+	Examples for both are also shown in the figure below in the middle and right respectively.
 	As $(1 \ldots n)$ for $n$ odd has even parity $\tau$ and $\sigma$ have the same parity and thus $M_{n}(\tau)$ and $M_{n}(\sigma)$ have the same sign
-	in the sum from the theorem. 
+	in the sum. 
+	
 	Finally taking the boundary the elements corresponding to $H$ have different orientations.
 	The element in $\partial_{R}(M_{n}(\sigma))$ is exactly $H$ with sign $(-1)^{k}$. The element in $\partial_{R}(M_{n}(\tau))$ however 
 	differs from $H$ by the permutation $(1 \ldots n-2)^{k - 1}$ with even parity as $n-2$ is odd and has sign $(-1)^{n-k}$.
@@ -749,6 +785,19 @@ Moreover when we talk about a Morita-Cycle we will always talk about it drawn in
 
 	Thus we have shown the result for both $\partial_{C}$ and $\partial_{R}$ and as $\partial = \partial_{C} - \partial_{R}$ it also follows for $\partial$.
 \end{proof}
+
+A more general result showing that a similar sum vanishes for $n$ polygons instead of just two
+has been shown by Conant and Vogtmann in \cite{conant08}.
+
+As we have shown that these sums of Morita-Cycles vanish under the boundary the question arises if they are
+non trivial in homology i.e. if they lie in the image of $\partial$ or not. 
+Morita showed himself that the first cycle ($n=3$) is non-trivial and conjectured that 
+all of his classes are non-trivial. Conant and Vogtmann showed in \cite{conant04} that 
+the second cycle ($n=5$) is also non-trivial, Gray extended this
+to show in \cite{gray11} that the third cycle ($n=7$ ) is also non-trivial.
+Both of these calculations relied partly on computer calculations
+which increase extremely quickly with $n$. Thus Morita's conjecture
+remains a challenging open problem to this day.
 
 \newpage
 \printbibliography
