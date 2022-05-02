@@ -1,0 +1,28 @@
+graph  {
+0 [pos="-200,100", shape=point];
+1 [pos="-129,70", shape=point];
+2 [pos="-100,0", shape=point];
+3 [pos="-129,-70", shape=point];
+4 [pos="-200,-100", shape=point];
+5 [pos="200,100", shape=point];
+6 [pos="129,70", shape=point];
+7 [pos="100,0", shape=point];
+8 [pos="129,-70", shape=point];
+9 [pos="199,-100", shape=point];
+0 -- 1  [forest=False, key=0, order="-1"];
+0 -- 1  [key=1];
+0 -- 4  [color=red, forest=True, key=0, label=1, order=1];
+0 -- 5  [forest=False, key=0, order="-1"];
+1 -- 2  [color=red, forest=True, key=0, label=2, order=2];
+1 -- 6  [forest=False, key=0, order="-1"];
+2 -- 3  [color=red, forest=True, key=0, label=3, order=3];
+2 -- 7  [forest=False, key=0, order="-1"];
+3 -- 4  [color=red, forest=True, key=0, label=4, order=4];
+3 -- 8  [forest=False, key=0, order="-1"];
+4 -- 9  [forest=False, key=0, order="-1"];
+5 -- 6  [forest=False, key=0, order="-1"];
+5 -- 9  [color=red, forest=True, key=0, label=5, order=5];
+6 -- 7  [color=red, forest=True, key=0, label=6, order=6];
+7 -- 8  [color=red, forest=True, key=0, label=7, order=7];
+8 -- 9  [color=red, forest=True, key=0, label=8, order=8];
+}

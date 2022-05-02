@@ -5,7 +5,7 @@
 
 % Node styles
 \tikzstyle{standard node}=[fill=black, draw=black, shape=circle]
-\tikzstyle{continuing graph}=[fill=white, draw=black, shape=rectangle]
+\tikzstyle{labelled node}=[fill={rgb,255: red,191; green,191; blue,191}, draw=black, font={\scriptsize}, shape=circle, scale=0.6]
 \tikzstyle{blue}=[fill={rgb,255: red,139; green,197; blue,255}, draw=black, shape=circle]
 \tikzstyle{green}=[fill={rgb,255: red,139; green,255; blue,161}, draw=black, shape=circle]
 \tikzstyle{red}=[fill={rgb,255: red,255; green,139; blue,139}, draw=black, shape=circle]
@@ -19,8 +19,7 @@
 
 % Edge styles
 \tikzstyle{standard}=[-, line width=1pt]
-\tikzstyle{red background}=[-, line width=4pt, draw={rgb,255: red,255; green,125; blue,127}]
-\tikzstyle{red edge}=[-, draw=red, line width=2]
+\tikzstyle{red edge}=[-, draw={rgb,255: red,255; green,160; blue,0}, line width=2]
 \tikzstyle{dashed line}=[-, line width=1pt, dashed]
 \tikzstyle{white line}=[-, draw=white, line width=1.25 pt]
-\tikzstyle{standard edge red}=[-, line width=1pt, draw=red]
+\tikzstyle{standard edge red}=[-, line width=1pt, draw={rgb,255: red,255; green,160; blue,0}]
