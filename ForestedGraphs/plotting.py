@@ -35,10 +35,18 @@ def pltChain(C,posFunction,path="out",lineWidth=5):
         masterG = nx.disjoint_union(masterG,G)
         cof = str(j) + "coef"
         masterG.add_node(cof)
-        masterG.nodes[cof]['label'] = count
+        if j == 0:
+            masterG.nodes[cof]['label'] = "  " + str(count)
+        elif count >= 0:
+            masterG.nodes[cof]['label'] = "+ " + str(count)
+        else:
+            masterG.nodes[cof]['label'] = "− " + str(abs(count))
         masterG.nodes[cof]['shape'] = "plaintext"
-        masterG.nodes[cof]['fontsize'] = "20pt"
-        masterG.nodes[cof]['pos'] = '"%d,%d"' %(100*(-2.2 + vPos), hPos*100)
+        masterG.nodes[cof]['fontsize'] = "26pt"
+        if j % lineWidth == 0:
+            masterG.nodes[cof]['pos'] = '"%d,%d"' %(100*(-2.5 + vPos), hPos*100)
+        else:
+            masterG.nodes[cof]['pos'] = '"%d,%d"' % (100 * (-3.0 + vPos), hPos * 100)
 
 
     p = nx.drawing.nx_pydot.to_pydot(masterG)

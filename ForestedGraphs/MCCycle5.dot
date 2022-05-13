@@ -9,7 +9,7 @@ graph  {
 7 [pos="100,0", shape=point, width="0.15pt"];
 8 [pos="129,-70", shape=point, width="0.15pt"];
 9 [pos="199,-100", shape=point, width="0.15pt"];
-10 [fontsize="20pt", label=2, pos="-220,0", shape=plaintext];
+10 [fontsize="26pt", label="  2", pos="-250,0", shape=plaintext];
 11 [pos="400,100", shape=point, width="0.15pt"];
 12 [pos="470,70", shape=point, width="0.15pt"];
 13 [pos="500,0", shape=point, width="0.15pt"];
@@ -20,7 +20,7 @@ graph  {
 18 [pos="700,0", shape=point, width="0.15pt"];
 19 [pos="729,-70", shape=point, width="0.15pt"];
 20 [pos="800,-100", shape=point, width="0.15pt"];
-21 [fontsize="20pt", label="-4", pos="380,0", shape=plaintext];
+21 [fontsize="26pt", label="− 4", pos="300,0", shape=plaintext];
 22 [pos="1000,100", shape=point, width="0.15pt"];
 23 [pos="1070,70", shape=point, width="0.15pt"];
 24 [pos="1100,0", shape=point, width="0.15pt"];
@@ -31,7 +31,7 @@ graph  {
 29 [pos="1300,0", shape=point, width="0.15pt"];
 30 [pos="1329,-70", shape=point, width="0.15pt"];
 31 [pos="1400,-100", shape=point, width="0.15pt"];
-32 [fontsize="20pt", label="-4", pos="980,0", shape=plaintext];
+32 [fontsize="26pt", label="− 4", pos="900,0", shape=plaintext];
 33 [pos="-200,-200", shape=point, width="0.15pt"];
 34 [pos="-129,-229", shape=point, width="0.15pt"];
 35 [pos="-100,-300", shape=point, width="0.15pt"];
@@ -42,7 +42,7 @@ graph  {
 40 [pos="100,-300", shape=point, width="0.15pt"];
 41 [pos="129,-370", shape=point, width="0.15pt"];
 42 [pos="199,-400", shape=point, width="0.15pt"];
-43 [fontsize="20pt", label=8, pos="-220,-300", shape=plaintext];
+43 [fontsize="26pt", label="+ 8", pos="-250,-300", shape=plaintext];
 44 [pos="400,-200", shape=point, width="0.15pt"];
 45 [pos="470,-229", shape=point, width="0.15pt"];
 46 [pos="500,-300", shape=point, width="0.15pt"];
@@ -53,7 +53,7 @@ graph  {
 51 [pos="700,-300", shape=point, width="0.15pt"];
 52 [pos="729,-370", shape=point, width="0.15pt"];
 53 [pos="800,-400", shape=point, width="0.15pt"];
-54 [fontsize="20pt", label="-4", pos="380,-300", shape=plaintext];
+54 [fontsize="26pt", label="− 4", pos="300,-300", shape=plaintext];
 55 [pos="1000,-200", shape=point, width="0.15pt"];
 56 [pos="1070,-229", shape=point, width="0.15pt"];
 57 [pos="1100,-300", shape=point, width="0.15pt"];
@@ -64,7 +64,7 @@ graph  {
 62 [pos="1300,-300", shape=point, width="0.15pt"];
 63 [pos="1329,-370", shape=point, width="0.15pt"];
 64 [pos="1400,-400", shape=point, width="0.15pt"];
-65 [fontsize="20pt", label=4, pos="980,-300", shape=plaintext];
+65 [fontsize="26pt", label="+ 4", pos="900,-300", shape=plaintext];
 66 [pos="-200,-500", shape=point, width="0.15pt"];
 67 [pos="-129,-529", shape=point, width="0.15pt"];
 68 [pos="-100,-600", shape=point, width="0.15pt"];
@@ -75,7 +75,7 @@ graph  {
 73 [pos="100,-600", shape=point, width="0.15pt"];
 74 [pos="129,-670", shape=point, width="0.15pt"];
 75 [pos="199,-700", shape=point, width="0.15pt"];
-76 [fontsize="20pt", label=4, pos="-220,-600", shape=plaintext];
+76 [fontsize="26pt", label="+ 4", pos="-250,-600", shape=plaintext];
 77 [pos="400,-500", shape=point, width="0.15pt"];
 78 [pos="470,-529", shape=point, width="0.15pt"];
 79 [pos="500,-600", shape=point, width="0.15pt"];
@@ -86,7 +86,7 @@ graph  {
 84 [pos="700,-600", shape=point, width="0.15pt"];
 85 [pos="729,-670", shape=point, width="0.15pt"];
 86 [pos="800,-700", shape=point, width="0.15pt"];
-87 [fontsize="20pt", label="-8", pos="380,-600", shape=plaintext];
+87 [fontsize="26pt", label="− 8", pos="300,-600", shape=plaintext];
 88 [pos="1000,-500", shape=point, width="0.15pt"];
 89 [pos="1070,-529", shape=point, width="0.15pt"];
 90 [pos="1100,-600", shape=point, width="0.15pt"];
@@ -97,7 +97,7 @@ graph  {
 95 [pos="1300,-600", shape=point, width="0.15pt"];
 96 [pos="1329,-670", shape=point, width="0.15pt"];
 97 [pos="1400,-700", shape=point, width="0.15pt"];
-98 [fontsize="20pt", label="-8", pos="980,-600", shape=plaintext];
+98 [fontsize="26pt", label="− 8", pos="900,-600", shape=plaintext];
 99 [pos="-200,-800", shape=point, width="0.15pt"];
 100 [pos="-129,-829", shape=point, width="0.15pt"];
 101 [pos="-100,-900", shape=point, width="0.15pt"];
@@ -108,7 +108,7 @@ graph  {
 106 [pos="100,-900", shape=point, width="0.15pt"];
 107 [pos="129,-970", shape=point, width="0.15pt"];
 108 [pos="199,-1000", shape=point, width="0.15pt"];
-109 [fontsize="20pt", label=8, pos="-220,-900", shape=plaintext];
+109 [fontsize="26pt", label="+ 8", pos="-250,-900", shape=plaintext];
 110 [pos="400,-800", shape=point, width="0.15pt"];
 111 [pos="470,-829", shape=point, width="0.15pt"];
 112 [pos="500,-900", shape=point, width="0.15pt"];
@@ -119,7 +119,7 @@ graph  {
 117 [pos="700,-900", shape=point, width="0.15pt"];
 118 [pos="729,-970", shape=point, width="0.15pt"];
 119 [pos="800,-1000", shape=point, width="0.15pt"];
-120 [fontsize="20pt", label="-2", pos="380,-900", shape=plaintext];
+120 [fontsize="26pt", label="− 2", pos="300,-900", shape=plaintext];
 121 [pos="1000,-800", shape=point, width="0.15pt"];
 122 [pos="1070,-829", shape=point, width="0.15pt"];
 123 [pos="1100,-900", shape=point, width="0.15pt"];
@@ -130,7 +130,7 @@ graph  {
 128 [pos="1300,-900", shape=point, width="0.15pt"];
 129 [pos="1329,-970", shape=point, width="0.15pt"];
 130 [pos="1400,-1000", shape=point, width="0.15pt"];
-131 [fontsize="20pt", label=8, pos="980,-900", shape=plaintext];
+131 [fontsize="26pt", label="+ 8", pos="900,-900", shape=plaintext];
 132 [pos="-200,-1100", shape=point, width="0.15pt"];
 133 [pos="-129,-1129", shape=point, width="0.15pt"];
 134 [pos="-100,-1200", shape=point, width="0.15pt"];
@@ -141,7 +141,7 @@ graph  {
 139 [pos="100,-1200", shape=point, width="0.15pt"];
 140 [pos="129,-1270", shape=point, width="0.15pt"];
 141 [pos="199,-1300", shape=point, width="0.15pt"];
-142 [fontsize="20pt", label=4, pos="-220,-1200", shape=plaintext];
+142 [fontsize="26pt", label="+ 4", pos="-250,-1200", shape=plaintext];
 143 [pos="400,-1100", shape=point, width="0.15pt"];
 144 [pos="470,-1129", shape=point, width="0.15pt"];
 145 [pos="500,-1200", shape=point, width="0.15pt"];
@@ -152,7 +152,7 @@ graph  {
 150 [pos="700,-1200", shape=point, width="0.15pt"];
 151 [pos="729,-1270", shape=point, width="0.15pt"];
 152 [pos="800,-1300", shape=point, width="0.15pt"];
-153 [fontsize="20pt", label="-8", pos="380,-1200", shape=plaintext];
+153 [fontsize="26pt", label="− 8", pos="300,-1200", shape=plaintext];
 154 [pos="1000,-1100", shape=point, width="0.15pt"];
 155 [pos="1070,-1129", shape=point, width="0.15pt"];
 156 [pos="1100,-1200", shape=point, width="0.15pt"];
@@ -163,7 +163,7 @@ graph  {
 161 [pos="1300,-1200", shape=point, width="0.15pt"];
 162 [pos="1329,-1270", shape=point, width="0.15pt"];
 163 [pos="1400,-1300", shape=point, width="0.15pt"];
-164 [fontsize="20pt", label="-4", pos="980,-1200", shape=plaintext];
+164 [fontsize="26pt", label="− 4", pos="900,-1200", shape=plaintext];
 165 [pos="-200,-1400", shape=point, width="0.15pt"];
 166 [pos="-129,-1429", shape=point, width="0.15pt"];
 167 [pos="-100,-1500", shape=point, width="0.15pt"];
@@ -174,7 +174,7 @@ graph  {
 172 [pos="100,-1500", shape=point, width="0.15pt"];
 173 [pos="129,-1570", shape=point, width="0.15pt"];
 174 [pos="199,-1600", shape=point, width="0.15pt"];
-175 [fontsize="20pt", label=4, pos="-220,-1500", shape=plaintext];
+175 [fontsize="26pt", label="+ 4", pos="-250,-1500", shape=plaintext];
 176 [pos="400,-1400", shape=point, width="0.15pt"];
 177 [pos="470,-1429", shape=point, width="0.15pt"];
 178 [pos="500,-1500", shape=point, width="0.15pt"];
@@ -185,7 +185,7 @@ graph  {
 183 [pos="700,-1500", shape=point, width="0.15pt"];
 184 [pos="729,-1570", shape=point, width="0.15pt"];
 185 [pos="800,-1600", shape=point, width="0.15pt"];
-186 [fontsize="20pt", label=2, pos="380,-1500", shape=plaintext];
+186 [fontsize="26pt", label="+ 2", pos="300,-1500", shape=plaintext];
 187 [pos="1000,-1400", shape=point, width="0.15pt"];
 188 [pos="1070,-1429", shape=point, width="0.15pt"];
 189 [pos="1100,-1500", shape=point, width="0.15pt"];
@@ -196,7 +196,7 @@ graph  {
 194 [pos="1300,-1500", shape=point, width="0.15pt"];
 195 [pos="1329,-1570", shape=point, width="0.15pt"];
 196 [pos="1400,-1600", shape=point, width="0.15pt"];
-197 [fontsize="20pt", label="-8", pos="980,-1500", shape=plaintext];
+197 [fontsize="26pt", label="− 8", pos="900,-1500", shape=plaintext];
 198 [pos="-200,-1700", shape=point, width="0.15pt"];
 199 [pos="-129,-1729", shape=point, width="0.15pt"];
 200 [pos="-100,-1800", shape=point, width="0.15pt"];
@@ -207,7 +207,7 @@ graph  {
 205 [pos="100,-1800", shape=point, width="0.15pt"];
 206 [pos="129,-1870", shape=point, width="0.15pt"];
 207 [pos="199,-1900", shape=point, width="0.15pt"];
-208 [fontsize="20pt", label=4, pos="-220,-1800", shape=plaintext];
+208 [fontsize="26pt", label="+ 4", pos="-250,-1800", shape=plaintext];
 209 [pos="400,-1700", shape=point, width="0.15pt"];
 210 [pos="470,-1729", shape=point, width="0.15pt"];
 211 [pos="500,-1800", shape=point, width="0.15pt"];
@@ -218,7 +218,7 @@ graph  {
 216 [pos="700,-1800", shape=point, width="0.15pt"];
 217 [pos="729,-1870", shape=point, width="0.15pt"];
 218 [pos="800,-1900", shape=point, width="0.15pt"];
-219 [fontsize="20pt", label=8, pos="380,-1800", shape=plaintext];
+219 [fontsize="26pt", label="+ 8", pos="300,-1800", shape=plaintext];
 220 [pos="1000,-1700", shape=point, width="0.15pt"];
 221 [pos="1070,-1729", shape=point, width="0.15pt"];
 222 [pos="1100,-1800", shape=point, width="0.15pt"];
@@ -229,7 +229,7 @@ graph  {
 227 [pos="1300,-1800", shape=point, width="0.15pt"];
 228 [pos="1329,-1870", shape=point, width="0.15pt"];
 229 [pos="1400,-1900", shape=point, width="0.15pt"];
-230 [fontsize="20pt", label=4, pos="980,-1800", shape=plaintext];
+230 [fontsize="26pt", label="+ 4", pos="900,-1800", shape=plaintext];
 231 [pos="-200,-2000", shape=point, width="0.15pt"];
 232 [pos="-129,-2029", shape=point, width="0.15pt"];
 233 [pos="-100,-2100", shape=point, width="0.15pt"];
@@ -240,7 +240,7 @@ graph  {
 238 [pos="100,-2100", shape=point, width="0.15pt"];
 239 [pos="129,-2170", shape=point, width="0.15pt"];
 240 [pos="199,-2200", shape=point, width="0.15pt"];
-241 [fontsize="20pt", label="-8", pos="-220,-2100", shape=plaintext];
+241 [fontsize="26pt", label="− 8", pos="-250,-2100", shape=plaintext];
 242 [pos="400,-2000", shape=point, width="0.15pt"];
 243 [pos="470,-2029", shape=point, width="0.15pt"];
 244 [pos="500,-2100", shape=point, width="0.15pt"];
@@ -251,7 +251,7 @@ graph  {
 249 [pos="700,-2100", shape=point, width="0.15pt"];
 250 [pos="729,-2170", shape=point, width="0.15pt"];
 251 [pos="800,-2200", shape=point, width="0.15pt"];
-"22coef" [fontsize="20pt", label="-2", pos="380,-2100", shape=plaintext];
+"22coef" [fontsize="26pt", label="− 2", pos="300,-2100", shape=plaintext];
 0 -- 1  [color="#ffa000", forest=True, key=0, label=1, order=1, penwidth=3];
 0 -- 4  [forest=False, key=0, order="-1", penwidth="2.0"];
 0 -- 5  [forest=False, key=0, order="-1", penwidth="2.0"];

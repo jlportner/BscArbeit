@@ -2,7 +2,7 @@ from boundaries import *
 from MoritaCycles import *
 from plotting import *
 
-n=5
+n=3
 path = "MCCycle" + str(n)
 C = createAllMCOf(n)
 C = resolveIsos(C)

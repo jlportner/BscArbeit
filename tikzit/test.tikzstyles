@@ -23,3 +23,4 @@
 \tikzstyle{dashed line}=[-, line width=1pt, dashed]
 \tikzstyle{white line}=[-, draw=white, line width=1.25 pt]
 \tikzstyle{standard edge red}=[-, line width=1pt, draw={rgb,255: red,255; green,160; blue,0}]
+\tikzstyle{oriented edge}=[line width=1pt, ->]

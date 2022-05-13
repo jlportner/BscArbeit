@@ -15,10 +15,10 @@ plt.rcParams.update({
   "text.latex.preamble": "\\usepackage{amsmath,amssymb}",
   "font.family": "serif",
   "font.serif": ["Computer Modern Roman"],
-  "font.size": 12
+  "font.size": 16
 })
 
-
+orange = [1.0,0.7,0.627,0.5]
 plt.fill_between(t,vcd,stb,color=[0.7,0.7,0.7,0.3],zorder=1.0)
 plt.plot(t,vcd,c='black',zorder=2.0)
 plt.plot(t,stb,":",c='black',zorder=2.0)
@@ -28,7 +28,7 @@ plt.scatter(moritaC[:,0], moritaC[:,1], s=11**2, c='black', marker='s', edgecolo
 plt.scatter(bartholdi[:,0], bartholdi[:,1], s=17**2, c='gray', marker='H', zorder=3.0)
 plt.text(0.5,14,"$H_0(\operatorname{Out}(F_n)) = \mathbb{Q}$",backgroundcolor="white",zorder=4.0)
 plt.text(18,6,"$H_k(\operatorname{Out}(F_n)) = 0$ above vcd\n$k > 2n-3$",ha="center",backgroundcolor="white", zorder=4.0)
-plt.text(3,9.5,"$H_k(\operatorname{Out}(F_n)) = 0$\nin stable range\n$n \geq \\frac{5 (k+1)}{4}$",ha="center",backgroundcolor="white", zorder=4.0)
+plt.text(3.5,10,"$H_k(\operatorname{Out}(F_n)) = 0$\nin stable range\n$n \geq \\frac{5 (k+1)}{4}$",ha="center",backgroundcolor="white", zorder=0.9)
 
 x = [0,24]
 y = [1,14]
@@ -40,7 +40,7 @@ plt.grid(True,zorder=-1.0)
 ax = plt.gca()
 ax.set_axisbelow(True)
 ax.set_aspect('equal')
-plt.xlabel("k",labelpad = -10.5, loc='right')
-plt.ylabel("n",labelpad = -10.5, loc='top',rotation=0)
+plt.xlabel("k",labelpad = -14.5, loc='right')
+plt.ylabel("n",labelpad = -14.5, loc='top',rotation=0)
 plt.savefig("OutFnHomology.pdf",bbox_inches='tight')
 
