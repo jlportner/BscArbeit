@@ -40,11 +40,11 @@ def pltChain(C,posFunction,path="out",lineWidth=5):
         elif count >= 0:
             masterG.nodes[cof]['label'] = "+ " + str(count)
         else:
-            masterG.nodes[cof]['label'] = "− " + str(abs(count))
+            masterG.nodes[cof]['label'] = "\u2212 " + str(abs(count))
         masterG.nodes[cof]['shape'] = "plaintext"
         masterG.nodes[cof]['fontsize'] = "26pt"
         if j % lineWidth == 0:
-            masterG.nodes[cof]['pos'] = '"%d,%d"' %(100*(-2.5 + vPos), hPos*100)
+            masterG.nodes[cof]['pos'] = '"%d,%d"' % (100 * (-2.5 + vPos), hPos * 100)
         else:
             masterG.nodes[cof]['pos'] = '"%d,%d"' % (100 * (-3.0 + vPos), hPos * 100)
 
